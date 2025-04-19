@@ -86,13 +86,12 @@ p {
 
 /* Header & Hero */
 .hero-section {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative;
+  color: white;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--dark-color) 0%, #2c3e50 100%);
-  color: var(--white);
 }
 
 #particles-js {
@@ -106,11 +105,9 @@ p {
 }
 
 .hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  position: relative;
+  z-index: 1; /* Above particles */
   width: 100%;
-  z-index: 1;
 }
 
 .hero-text {
