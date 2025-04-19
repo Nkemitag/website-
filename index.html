@@ -76,24 +76,41 @@
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <header id="home" class="hero-section">
-        <div id="particles-js"></div>
-        <div class="container hero-content">
+    <!-- Animated Background Elements -->
+    <div class="bg-shapes">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <ul>
+            <li><a href="#about" data-tooltip="About Me"><i class="fas fa-user"></i></a></li>
+            <li><a href="#skills" data-tooltip="My Skills"><i class="fas fa-code"></i></a></li>
+            <li><a href="#projects" data-tooltip="Projects"><i class="fas fa-project-diagram"></i></a></li>
+            <li><a href="#testimonials" data-tooltip="Testimonials"><i class="fas fa-quote-right"></i></a></li>
+            <li><a href="#contact" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Particle Background -->
+    <header class="hero-section" id="particles-js">
+        <div class="hero-content">
             <div class="hero-text">
                 <h1 class="animated-heading">David Nkemitag</h1>
                 <div class="typewriter">
                     <h2>Web Designer & Developer</h2>
                 </div>
-                <p class="hero-subtitle">I create beautiful, functional websites that deliver results</p>
+                <p class="hero-subtitle">Creating digital experiences that inspire and engage</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary pulse">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#contact" class="btn btn-primary pulse">Hire Me</a>
+                    <a href="#projects" class="btn btn-secondary">View Work</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-container">
-                    <img src="profile.jpg" alt="David Nkemitag" class="profile-img">
+                    <img src="https://via.placeholder.com/400x400" alt="David Nkemitag" class="profile-img">
                     <div class="tech-icons">
                         <i class="fab fa-html5 html"></i>
                         <i class="fab fa-css3-alt css"></i>
@@ -104,88 +121,58 @@
                 </div>
             </div>
         </div>
-        <a href="#about" class="scroll-down">
+        <div class="scroll-down">
             <span>Scroll Down</span>
             <i class="fas fa-chevron-down"></i>
-        </a>
+        </div>
     </header>
-
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <ul>
-            <li><a href="#home" data-tooltip="Home" class="active"><i class="fas fa-home"></i></a></li>
-            <li><a href="#about" data-tooltip="About"><i class="fas fa-user"></i></a></li>
-            <li><a href="#skills" data-tooltip="Skills"><i class="fas fa-code"></i></a></li>
-            <li><a href="#projects" data-tooltip="Projects"><i class="fas fa-briefcase"></i></a></li>
-            <li><a href="#testimonials" data-tooltip="Testimonials"><i class="fas fa-quote-left"></i></a></li>
-            <li><a href="#contact" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
-        </ul>
-    </nav>
 
     <!-- About Section -->
     <section id="about" class="section about-section">
         <div class="container">
             <h2 class="section-title">About <span>Me</span></h2>
-            <p class="section-subtitle">Get to know me better</p>
-            
             <div class="about-content">
                 <div class="about-text">
-                    <p class="highlight">I'm a passionate web designer and developer with 5+ years of experience creating digital experiences that combine beautiful design with solid functionality.</p>
-                    
+                    <p class="highlight">Hi, I'm <strong>David Nkemitag</strong>, a passionate web designer and developer with expertise in creating beautiful, responsive, and accessible digital experiences.</p>
+                    <p>With a strong foundation in both design and development, I bridge the gap between aesthetics and functionality. My approach combines creative problem-solving with technical precision to deliver websites that not only look stunning but perform exceptionally.</p>
                     <div class="about-details">
                         <div class="detail-item">
-                            <i class="fas fa-user-tie"></i>
+                            <i class="fas fa-graduation-cap"></i>
                             <div>
-                                <h3>Name</h3>
-                                <p>David Nkemitag</p>
+                                <h3>Education</h3>
+                                <p>Computer Science Degree</p>
                             </div>
                         </div>
                         <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h3>Email</h3>
-                                <p>david@example.com</p>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h3>Location</h3>
-                                <p>Lagos, Nigeria</p>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-briefcase"></i>
                             <div>
                                 <h3>Experience</h3>
-                                <p>5+ Years</p>
+                                <p>5+ Years in Web Development</p>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="social-links">
                         <a href="#"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
                     </div>
                 </div>
-                
                 <div class="about-skills">
                     <div class="skill-meter">
-                        <h3>Web Design <span>95%</span></h3>
+                        <h3>HTML/CSS <span>95%</span></h3>
                         <div class="meter"><span style="width: 95%"></span></div>
                     </div>
                     <div class="skill-meter">
-                        <h3>Frontend Development <span>90%</span></h3>
+                        <h3>JavaScript <span>90%</span></h3>
                         <div class="meter"><span style="width: 90%"></span></div>
                     </div>
                     <div class="skill-meter">
-                        <h3>UI/UX Design <span>85%</span></h3>
+                        <h3>React <span>85%</span></h3>
                         <div class="meter"><span style="width: 85%"></span></div>
                     </div>
                     <div class="skill-meter">
-                        <h3>JavaScript <span>88%</span></h3>
+                        <h3>UI/UX Design <span>88%</span></h3>
                         <div class="meter"><span style="width: 88%"></span></div>
                     </div>
                 </div>
@@ -193,65 +180,73 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section with Animated Cards -->
     <section id="skills" class="section skills-section">
         <div class="container">
             <h2 class="section-title">My <span>Skills</span></h2>
             <p class="section-subtitle">Technologies I work with</p>
-            
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card" data-skill="html">
                     <div class="skill-icon">
                         <i class="fab fa-html5"></i>
                     </div>
                     <h3>HTML5</h3>
-                    <p>Semantic markup, accessibility standards, and modern HTML5 features.</p>
+                    <p>Semantic markup, accessibility, modern standards</p>
                 </div>
-                
-                <div class="skill-card">
+                <div class="skill-card" data-skill="css">
                     <div class="skill-icon">
                         <i class="fab fa-css3-alt"></i>
                     </div>
                     <h3>CSS3</h3>
-                    <p>Advanced styling, animations, Flexbox, Grid, and responsive design.</p>
+                    <p>Animations, Flexbox, Grid, responsive design</p>
                 </div>
-                
-                <div class="skill-card">
+                <div class="skill-card" data-skill="js">
                     <div class="skill-icon">
                         <i class="fab fa-js"></i>
                     </div>
                     <h3>JavaScript</h3>
-                    <p>ES6+, DOM manipulation, async programming, and modern frameworks.</p>
+                    <p>ES6+, DOM manipulation, async programming</p>
                 </div>
-                
-                <div class="skill-card">
+                <div class="skill-card" data-skill="react">
                     <div class="skill-icon">
                         <i class="fab fa-react"></i>
                     </div>
                     <h3>React</h3>
-                    <p>Component-based architecture, hooks, state management, and routing.</p>
+                    <p>Hooks, Context API, Redux, performance</p>
                 </div>
-                
-                <div class="skill-card">
+                <div class="skill-card" data-skill="node">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>Express, REST APIs, authentication</p>
+                </div>
+                <div class="skill-card" data-skill="python">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Django, Flask, data processing</p>
+                </div>
+                <div class="skill-card" data-skill="database">
                     <div class="skill-icon">
                         <i class="fas fa-database"></i>
                     </div>
-                    <h3>Backend</h3>
-                    <p>Node.js, Express, MongoDB, and RESTful API development.</p>
+                    <h3>Databases</h3>
+                    <p>MySQL, MongoDB, PostgreSQL</p>
                 </div>
-                
-                <div class="skill-card">
+                <div class="skill-card" data-skill="accessibility">
                     <div class="skill-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-universal-access"></i>
                     </div>
-                    <h3>Responsive Design</h3>
-                    <p>Mobile-first approach, media queries, and cross-browser compatibility.</p>
+                    <h3>Accessibility</h3>
+                    <p>WCAG 2.x AA, AODA compliance</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section with Interactive Gallery -->
     <section id="projects" class="section projects-section">
         <div class="container">
             <h2 class="section-title">My <span>Projects</span></h2>
@@ -265,46 +260,6 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-img">
-                        <img src="project1.jpg" alt="E-commerce Website">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Website</h3>
-                        <p>Modern online store with product filtering and cart functionality</p>
-                        <div class="project-tags">
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                            <span>PHP</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <img src="project2.jpg" alt="Task Management App">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Task Management App</h3>
-                        <p>Drag-and-drop task board with real-time updates</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Firebase</span>
-                            <span>Redux</span>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Basketball Game Project -->
                 <div class="project-card" data-category="game">
                     <div class="project-img">
@@ -331,32 +286,88 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="E-commerce Website">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-commerce Platform</h3>
+                        <p>Full-featured online store with payment integration</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="app">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Portfolio Website">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio CMS</h3>
+                        <p>Custom portfolio system with admin panel</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="app">
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Single Page Application">
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Business Dashboard</h3>
+                        <p>Data visualization SPA with real-time updates</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>D3.js</span>
+                            <span>REST API</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="view-more">
-                <a href="#" class="btn btn-outline">View More Projects</a>
+                <a href="#" class="btn btn-outline">View All Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section with Carousel -->
     <section id="testimonials" class="section testimonials-section">
         <div class="container">
             <h2 class="section-title">Client <span>Testimonials</span></h2>
-            <p class="section-subtitle">What my clients say about my work</p>
+            <p class="section-subtitle">What people say about my work</p>
             
             <div class="testimonials-carousel">
-                <!-- Testimonial 1 -->
                 <div class="testimonial-slide active">
                     <div class="testimonial-content">
                         <div class="testimonial-img">
-                            <img src="client1.jpg" alt="Sarah Johnson">
+                            <img src="https://via.placeholder.com/150" alt="Client 1">
                         </div>
                         <div class="testimonial-text">
-                            <p>David completely transformed our online presence. His attention to detail and creative approach resulted in a website that perfectly represents our brand.</p>
+                            <p>"David transformed our outdated website into a modern, user-friendly platform that has significantly increased our conversion rates. His attention to detail and creative solutions were impressive."</p>
                             <div class="testimonial-author">
                                 <h4>Sarah Johnson</h4>
-                                <span>CEO, TechSolutions Inc.</span>
+                                <span>Marketing Director, TechCorp</span>
                                 <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -369,17 +380,16 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial 2 -->
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
                         <div class="testimonial-img">
-                            <img src="client2.jpg" alt="Michael Brown">
+                            <img src="https://via.placeholder.com/150" alt="Client 2">
                         </div>
                         <div class="testimonial-text">
-                            <p>Working with David was a pleasure. He delivered our e-commerce platform ahead of schedule and under budget. Highly recommended!</p>
+                            <p>"Working with David was a pleasure. He delivered our e-commerce site ahead of schedule and under budget. The site is not only beautiful but also performs exceptionally well on all devices."</p>
                             <div class="testimonial-author">
-                                <h4>Michael Brown</h4>
-                                <span>Founder, FashionHub</span>
+                                <h4>Michael Chen</h4>
+                                <span>CEO, ShopOnline</span>
                                 <div class="rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -391,24 +401,47 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="carousel-controls">
-                <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-img">
+                            <img src="https://via.placeholder.com/150" alt="Client 3">
+                        </div>
+                        <div class="testimonial-text">
+                            <p>"David's expertise in accessibility compliance was invaluable for our government project. He ensured our application met all WCAG standards without compromising on design or functionality."</p>
+                            <div class="testimonial-author">
+                                <h4>Emily Rodriguez</h4>
+                                <span>Project Manager, GovDigital</span>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Interactive Form -->
     <section id="contact" class="section contact-section">
         <div class="container">
             <h2 class="section-title">Get In <span>Touch</span></h2>
-            <p class="section-subtitle">Have a project in mind? Let's talk</p>
+            <p class="section-subtitle">Let's work together on your next project</p>
             
             <div class="contact-content">
                 <div class="contact-info">
@@ -416,10 +449,9 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Location</h3>
-                            <p>Lagos, Nigeria</p>
+                            <p>Toronto, Canada</p>
                         </div>
                     </div>
-                    
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
@@ -427,15 +459,13 @@
                             <p>david@example.com</p>
                         </div>
                     </div>
-                    
                     <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
+                        <i class="fas fa-phone"></i>
                         <div>
                             <h3>Phone</h3>
-                            <p>+234 123 456 7890</p>
+                            <p>+1 (123) 456-7890</p>
                         </div>
                     </div>
-                    
                     <div class="contact-social">
                         <a href="#"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
@@ -444,33 +474,28 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder=" " required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder=" " required>
-                            <label for="email">Your Email</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="text" id="subject" placeholder=" ">
-                            <label for="subject">Subject</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea id="message" placeholder=" " required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -481,40 +506,35 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h2>David Nkemitag</h2>
-                    <p>Creating digital experiences that inspire and engage.</p>
+                    <p>Web Designer & Developer</p>
                 </div>
-                
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-services">
                     <h3>Services</h3>
                     <ul>
                         <li><a href="#">Web Design</a></li>
                         <li><a href="#">Web Development</a></li>
                         <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Consulting</a></li>
+                        <li><a href="#">Accessibility Audits</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-newsletter">
                     <h3>Newsletter</h3>
-                    <p>Subscribe to get updates on my latest projects and articles.</p>
+                    <p>Subscribe to my newsletter for the latest updates.</p>
                     <form class="newsletter-form">
                         <input type="email" placeholder="Your Email">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2023 David Nkemitag. All Rights Reserved.</p>
                 <div class="footer-legal">
@@ -526,7 +546,9 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- JavaScript Files -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
