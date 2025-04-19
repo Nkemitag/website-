@@ -7,6 +7,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basketball Game Specific Styles */
+        .game-preview-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        #basketball-game-preview {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .game-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .game-btn {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .shoot-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .reset-btn {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .score-display {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .score-display span {
+            color: #f9ca24;
+            font-size: 1.1em;
+        }
+
+        .project-features {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .project-features h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-features li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-features i {
+            color: #007BFF;
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- [Previous HTML content remains exactly the same until the scripts section] -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Nkemitag - Creative Web Designer & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Animated Background Elements -->
@@ -483,5 +593,457 @@
 
 <!-- Load Particle.js library -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</body>
+</html>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Basketball Game Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('basketball-game-preview');
+            const ctx = canvas.getContext('2d');
+            const shootBtn = document.querySelector('.shoot-btn');
+            const resetBtn = document.querySelector('.reset-btn');
+            const scoreDisplay = document.querySelector('.score-display span');
+            
+            // Game variables
+            let score = 0;
+            let ball = {
+                x: 100,
+                y: canvas.height - 50,
+                radius: 20,
+                color: '#e67e22',
+                dx: 0,
+                dy: 0,
+                gravity: 0.2,
+                friction: 0.99,
+                bouncing: false
+            };
+            
+            let hoop = {
+                x: canvas.width - 100,
+                y: 150,
+                width: 60,
+                height: 10,
+                backboardWidth: 10,
+                backboardHeight: 80,
+                color: '#333'
+            };
+            
+            let net = {
+                x: hoop.x - 15,
+                y: hoop.y + hoop.height,
+                width: 30,
+                height: 40,
+                segments: 6
+            };
+            
+            let isShooting = false;
+            
+            // Draw functions
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fillStyle = ball.color;
+                ctx.fill();
+                ctx.closePath();
+                
+                // Basketball lines
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI, false);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, Math.PI, Math.PI * 2, false);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(ball.x - ball.radius, ball.y);
+                ctx.lineTo(ball.x + ball.radius, ball.y);
+                ctx.stroke();
+            }
+            
+            function drawHoop() {
+                // Backboard
+                ctx.fillStyle = hoop.color;
+                ctx.fillRect(hoop.x - hoop.backboardWidth, hoop.y - 30, 
+                             hoop.backboardWidth, hoop.backboardHeight);
+                
+                // Hoop
+                ctx.fillStyle = '#e74c3c';
+                ctx.fillRect(hoop.x, hoop.y, hoop.width, hoop.height);
+                
+                // Net
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1;
+                const segmentWidth = net.width / net.segments;
+                
+                for (let i = 0; i <= net.segments; i++) {
+                    const x = net.x + i * segmentWidth;
+                    ctx.beginPath();
+                    ctx.moveTo(x, net.y);
+                    ctx.lineTo(x + segmentWidth/2, net.y + net.height);
+                    ctx.stroke();
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(x, net.y);
+                    ctx.lineTo(x - segmentWidth/2, net.y + net.height);
+                    ctx.stroke();
+                }
+            }
+            
+            function drawCourt() {
+                // Court lines
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(50, canvas.height - 30);
+                ctx.lineTo(canvas.width - 50, canvas.height - 30);
+                ctx.stroke();
+                
+                // Free throw line
+                ctx.beginPath();
+                ctx.arc(150, canvas.height - 30, 60, 0, Math.PI, true);
+                ctx.stroke();
+            }
+            
+            function update() {
+                if (!isShooting) return;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Apply physics
+                ball.dy += ball.gravity;
+                ball.dx *= ball.friction;
+                ball.dy *= ball.friction;
+                
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+                
+                // Wall collision
+                if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+                    ball.dx = -ball.dx * 0.8;
+                }
+                
+                // Floor collision
+                if (ball.y + ball.radius > canvas.height - 30) {
+                    ball.y = canvas.height - 30 - ball.radius;
+                    ball.dy = -ball.dy * 0.7;
+                    ball.dx *= 0.9;
+                    
+                    if (Math.abs(ball.dy) < 1) {
+                        ball.dy = 0;
+                        isShooting = false;
+                    }
+                }
+                
+                // Hoop collision detection
+                if (ball.y - ball.radius < hoop.y + hoop.height &&
+                    ball.y + ball.radius > hoop.y &&
+                    ball.x + ball.radius > hoop.x &&
+                    ball.x - ball.radius < hoop.x + hoop.width) {
+                    
+                    // Score if ball comes from above
+                    if (ball.dy > 0 && !ball.bouncing) {
+                        score++;
+                        scoreDisplay.textContent = score;
+                        ball.bouncing = true;
+                    }
+                    
+                    ball.dy = -ball.dy * 0.5;
+                    ball.dx *= 0.9;
+                } else {
+                    ball.bouncing = false;
+                }
+                
+                drawCourt();
+                drawHoop();
+                drawBall();
+                
+                if (isShooting) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            function shootBall() {
+                if (isShooting) return;
+                
+                isShooting = true;
+                ball.x = 100;
+                ball.y = canvas.height - 50;
+                ball.dx = 8 + Math.random() * 4;
+                ball.dy = -12 - Math.random() * 4;
+                update();
+            }
+            
+            function resetGame() {
+                isShooting = false;
+                score = 0;
+                scoreDisplay.textContent = score;
+                ball.x = 100;
+                ball.y = canvas.height - 50;
+                ball.dx = 0;
+                ball.dy = 0;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawCourt();
+                drawHoop();
+                drawBall();
+            }
+            
+            // Event listeners
+            shootBtn.addEventListener('click', shootBall);
+            resetBtn.addEventListener('click', resetGame);
+            
+            // Touch support for mobile
+            shootBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                shootBall();
+            });
+            
+            resetBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                resetGame();
+            });
+            
+            // Initialize game
+            resetGame();
+        });
+
+        // Smooth scrolling with offset for fixed header and additional enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    // Skip if it's a non-section link (like social media)
+                    if (this.classList.contains('no-smooth-scroll')) return;
+                    
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Calculate offset (adjust 90 to match your header height)
+                        const headerHeight = document.querySelector('header').offsetHeight || 90;
+                        const additionalOffset = this.dataset.offset ? parseInt(this.dataset.offset) : 0;
+                        const totalOffset = headerHeight + additionalOffset;
+                        
+                        // Calculate target position
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+                        
+                        // Smooth scroll
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without jump
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            window.location.hash = targetId;
+                        }
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.querySelector('.mobile-menu');
+                        if (mobileMenu && mobileMenu.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
+            });
+            
+            // Handle back/forward navigation with smooth scroll
+            window.addEventListener('popstate', function(e) {
+                if (location.hash) {
+                    const targetElement = document.querySelector(location.hash);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight || 90;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+            
+            // Add active class to current section in navigation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.floating-nav a, nav a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Initialize particles.js if available
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 80,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#ffffff"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                            "polygon": {
+                                "nb_sides": 5
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.5,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 2,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#ffffff",
+                            "opacity": 0.4,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": true,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "repulse"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 400,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 100,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+            
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (backToTopButton) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('show');
+                    } else {
+                        backToTopButton.classList.remove('show');
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Update URL without jump
+                    if (history.pushState) {
+                        history.pushState(null, null, ' ');
+                    } else {
+                        window.location.hash = '';
+                    }
+                });
+            }
+        });
+
+        // Mobile menu toggle function (if you add a mobile menu)
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuButton = document.querySelector('.menu-toggle');
+            
+            if (mobileMenu && menuButton) {
+                mobileMenu.classList.toggle('active');
+                menuButton.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            }
+        }
+    </script>
 </body>
 </html>
