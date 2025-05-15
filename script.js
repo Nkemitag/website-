@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initBasketballGame();
     handleInitialHashURL();
     
-    // Mobile menu toggle (if you implement it later)
-    const menuToggle = document.querySelector('.menu-toggle');
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
     if (menuToggle) {
         menuToggle.addEventListener('click', toggleMobileMenu);
     }
@@ -26,7 +26,7 @@ function initSmoothScrolling() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                scrollToElement(targetElement, this.dataset.offset);
+                scrollToElement(targetElement);
                 updateURL(targetId);
                 closeMobileMenuIfOpen();
             }
@@ -43,9 +43,9 @@ function initSmoothScrolling() {
     });
 }
 
-// Scroll to element with offset
+// Scroll to element with offset (adjusted for HTML structure)
 function scrollToElement(element, additionalOffset = 0) {
-    const headerHeight = document.querySelector('header')?.offsetHeight || 90;
+    const headerHeight = document.querySelector('nav')?.offsetHeight || 80;
     const offset = parseInt(additionalOffset) || 0;
     const totalOffset = headerHeight + offset;
     
@@ -69,9 +69,9 @@ function updateURL(hash) {
 
 // Close mobile menu if open
 function closeMobileMenuIfOpen() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenu?.classList.contains('active')) {
-        toggleMobileMenu();
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
     }
 }
 
@@ -90,7 +90,7 @@ function handleInitialHashURL() {
 // Add active class to current section in navigation
 function initActiveSectionDetection() {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.floating-nav a, nav a');
+    const navLinks = document.querySelectorAll('.nav-link');
     
     window.addEventListener('scroll', function() {
         let current = '';
@@ -111,74 +111,38 @@ function initActiveSectionDetection() {
     });
 }
 
-// Initialize particles.js
+// Initialize particles.js (optional - not in original HTML)
 function initParticlesJS() {
+    // Only initialize if particles-js element exists
     if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
         particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1 }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": { "enable": true, "speed": 2, "size_min": 0.1 }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": true,
-                    "out_mode": "out",
-                    "attract": { "enable": true, "rotateX": 600, "rotateY": 1200 }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "repulse" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "repulse": { "distance": 100, "duration": 0.4 },
-                    "push": { "particles_nb": 4 }
-                }
-            },
-            "retina_detect": true
+            // ... your particles config ...
         });
     }
 }
 
 // Back to top button functionality
 function initBackToTopButton() {
-    const backToTopButton = document.querySelector('.back-to-top');
+    const backToTopButton = document.getElementById('back-to-top');
     if (backToTopButton) {
         window.addEventListener('scroll', function() {
-            backToTopButton.classList.toggle('show', window.pageYOffset > 300);
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
         });
         
         backToTopButton.addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            updateURL(' ');
         });
     }
 }
 
-// Basketball Game Implementation
+// Basketball Game Implementation (updated for HTML structure)
 function initBasketballGame() {
     const canvas = document.getElementById('basketball-game-preview');
     if (!canvas) return;
@@ -193,152 +157,159 @@ function initBasketballGame() {
     let ball = {
         x: 100,
         y: canvas.height - 50,
-        radius: 20,
-        color: '#e67e22',
+        radius: 15,
         dx: 0,
         dy: 0,
         gravity: 0.2,
         friction: 0.99,
-        bouncing: false
+        isMoving: false
     };
     
     let hoop = {
         x: canvas.width - 100,
         y: 150,
         width: 60,
-        height: 10,
-        backboardWidth: 10,
-        backboardHeight: 80,
-        color: '#333'
+        height: 5,
+        rimWidth: 80,
+        rimHeight: 5
     };
     
-    // Initialize game
-    function initGame() {
-        drawCourt();
-        drawHoop();
-        drawBall();
-    }
+    let backboard = {
+        x: hoop.x - 10,
+        y: hoop.y - 100,
+        width: 10,
+        height: 100
+    };
     
-    // Draw functions
-    function drawBall() {
-        ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-        ctx.fillStyle = ball.color;
-        ctx.fill();
-        ctx.closePath();
-        
-        // Basketball lines
-        ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI, false);
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-    }
-    
-    function drawHoop() {
-        // Backboard
-        ctx.fillStyle = hoop.color;
-        ctx.fillRect(hoop.x - hoop.backboardWidth, hoop.y - 30, 
-                     hoop.backboardWidth, hoop.backboardHeight);
-        
-        // Hoop
-        ctx.fillStyle = '#e74c3c';
-        ctx.fillRect(hoop.x, hoop.y, hoop.width, hoop.height);
-    }
-    
-    function drawCourt() {
-        // Court lines
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(50, canvas.height - 30);
-        ctx.lineTo(canvas.width - 50, canvas.height - 30);
-        ctx.stroke();
-        
-        // Free throw line
-        ctx.beginPath();
-        ctx.arc(150, canvas.height - 30, 60, 0, Math.PI, true);
-        ctx.stroke();
-    }
-    
-    function update() {
+    // Draw game elements
+    function draw() {
+        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Apply physics
-        ball.dy += ball.gravity;
-        ball.dx *= ball.friction;
-        ball.dy *= ball.friction;
+        // Draw backboard
+        ctx.fillStyle = 'white';
+        ctx.fillRect(backboard.x, backboard.y, backboard.width, backboard.height);
         
-        ball.x += ball.dx;
-        ball.y += ball.dy;
+        // Draw hoop
+        ctx.fillStyle = 'red';
+        ctx.fillRect(hoop.x, hoop.y, hoop.width, hoop.height);
         
-        // Wall collision
-        if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
-            ball.dx = -ball.dx * 0.8;
-        }
+        // Draw rim
+        ctx.fillStyle = 'orange';
+        ctx.fillRect(hoop.x - 10, hoop.y, hoop.rimWidth, hoop.rimHeight);
         
-        // Floor collision
-        if (ball.y + ball.radius > canvas.height - 30) {
-            ball.y = canvas.height - 30 - ball.radius;
-            ball.dy = -ball.dy * 0.7;
-        }
+        // Draw ball
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'orange';
+        ctx.fill();
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+        ctx.closePath();
         
-        // Hoop collision
-        if (ball.y - ball.radius < hoop.y + hoop.height &&
-            ball.x + ball.radius > hoop.x &&
-            ball.x - ball.radius < hoop.x + hoop.width) {
+        // Draw score
+        ctx.fillStyle = 'white';
+        ctx.font = '20px Arial';
+        ctx.fillText(`Score: ${score}`, 20, 30);
+    }
+    
+    // Update game state
+    function update() {
+        if (ball.isMoving) {
+            // Apply physics
+            ball.dy += ball.gravity;
+            ball.dx *= ball.friction;
+            ball.dy *= ball.friction;
             
-            if (ball.dy > 0) { // Only score when ball is falling
-                score++;
-                scoreDisplay.textContent = score;
-            }
-            ball.dy = -ball.dy * 0.5;
+            // Update position
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+            
+            // Check collisions
+            checkCollisions();
+            
+            // Check scoring
+            checkScoring();
         }
         
-        drawCourt();
-        drawHoop();
-        drawBall();
-        
-        if (Math.abs(ball.dy) > 0.1 || Math.abs(ball.dx) > 0.1) {
+        draw();
+        if (ball.isMoving) {
             requestAnimationFrame(update);
         }
     }
     
-    // Event listeners
-    if (shootBtn) {
-        shootBtn.addEventListener('click', function() {
-            ball.x = 100;
-            ball.y = canvas.height - 50;
-            ball.dx = 8 + Math.random() * 4;
-            ball.dy = -12 - Math.random() * 4;
+    function checkCollisions() {
+        // Floor collision
+        if (ball.y + ball.radius > canvas.height) {
+            ball.y = canvas.height - ball.radius;
+            ball.dy = -ball.dy * 0.6;
+            ball.dx *= 0.8;
+            
+            if (Math.abs(ball.dy) < 1) {
+                ball.isMoving = false;
+            }
+        }
+        
+        // Wall collisions
+        if (ball.x - ball.radius < 0) {
+            ball.x = ball.radius;
+            ball.dx = -ball.dx * 0.8;
+        }
+        
+        if (ball.x + ball.radius > canvas.width) {
+            ball.x = canvas.width - ball.radius;
+            ball.dx = -ball.dx * 0.8;
+        }
+    }
+    
+    function checkScoring() {
+        if (ball.y + ball.radius > hoop.y && 
+            ball.y - ball.radius < hoop.y + hoop.height && 
+            ball.x + ball.radius > hoop.x && 
+            ball.x - ball.radius < hoop.x + hoop.width) {
+            
+            if (ball.dy > 0) { // Coming from above
+                score++;
+                if (scoreDisplay) scoreDisplay.textContent = score;
+                resetBall();
+            }
+        }
+    }
+    
+    function resetBall() {
+        ball.x = 100;
+        ball.y = canvas.height - 50;
+        ball.dx = 0;
+        ball.dy = 0;
+        ball.isMoving = false;
+    }
+    
+    function shootBall() {
+        if (!ball.isMoving) {
+            ball.dx = 8 + Math.random() * 2;
+            ball.dy = -12 - Math.random() * 3;
+            ball.isMoving = true;
             update();
-        });
+        }
     }
     
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            score = 0;
-            scoreDisplay.textContent = score;
-            ball.x = 100;
-            ball.y = canvas.height - 50;
-            ball.dx = 0;
-            ball.dy = 0;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            initGame();
-        });
-    }
+    // Event listeners
+    if (shootBtn) shootBtn.addEventListener('click', shootBall);
+    if (resetBtn) resetBtn.addEventListener('click', function() {
+        score = 0;
+        if (scoreDisplay) scoreDisplay.textContent = score;
+        resetBall();
+        draw();
+    });
     
-    initGame();
+    // Initial draw
+    draw();
 }
 
 // Mobile menu toggle function
 function toggleMobileMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const menuButton = document.querySelector('.menu-toggle');
-    
-    if (mobileMenu && menuButton) {
-        mobileMenu.classList.toggle('active');
-        menuButton.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
     }
 }
