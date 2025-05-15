@@ -3,27 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Nkemitag - Creative Web Designer & Developer</title>
+    <title>David Nkemitag - Award-Winning Web Designer & Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .skill-meter {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 1s ease-in-out;
+        }
+        
+        .testimonial-card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
         /* Basketball Game Specific Styles */
         .game-preview-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 300px;
             background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
             border-radius: 8px 8px 0 0;
             overflow: hidden;
         }
-
+        
         #basketball-game-preview {
             display: block;
             width: 100%;
             height: 100%;
         }
-
+        
         .game-controls {
             position: absolute;
             bottom: 20px;
@@ -34,7 +174,7 @@
             gap: 20px;
             padding: 10px;
         }
-
+        
         .game-btn {
             padding: 8px 20px;
             background: rgba(255, 255, 255, 0.9);
@@ -45,22 +185,22 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
+        
         .game-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
-
+        
         .shoot-btn {
             background: #ff6b6b;
             color: white;
         }
-
+        
         .reset-btn {
             background: #4ecdc4;
             color: white;
         }
-
+        
         .score-display {
             background: rgba(0, 0, 0, 0.7);
             color: white;
@@ -68,490 +208,882 @@
             border-radius: 20px;
             font-weight: bold;
         }
-
+        
         .score-display span {
             color: #f9ca24;
             font-size: 1.1em;
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background Elements -->
-    <div class="bg-shapes">
-        <div class="shape-1"></div>
-        <div class="shape-2"></div>
-        <div class="shape-3"></div>
-    </div>
-
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <ul>
-            <li><a href="#about" data-tooltip="About Me"><i class="fas fa-user"></i></a></li>
-            <li><a href="#skills" data-tooltip="My Skills"><i class="fas fa-code"></i></a></li>
-            <li><a href="#projects" data-tooltip="Projects"><i class="fas fa-project-diagram"></i></a></li>
-            <li><a href="#testimonials" data-tooltip="Testimonials"><i class="fas fa-quote-right"></i></a></li>
-            <li><a href="#contact" data-tooltip="Contact"><i class="fas fa-envelope"></i></a></li>
-        </ul>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold gradient-text">DAVID NKEMITAG</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500 transition">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-500 transition">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-500 transition">Projects</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-500 transition">Testimonials</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-700 hover:text-blue-500 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Projects</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Testimonials</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Section with Particle Background -->
-    <header class="hero-section" id="particles-js">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="animated-heading">David Nkemitag</h1>
-                <div class="typewriter">
-                    <h2>Web Designer & Developer</h2>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        Hi, I'm <span class="gradient-text">David Nkemitag</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6 typewriter">Web Designer & Developer</h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                        I create beautiful, functional websites that deliver exceptional user experiences and measurable business results.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition duration-300">
+                            Contact Me
+                        </a>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-award text-blue-500"></i>
+                            </div>
+                            <span class="text-sm font-medium">5+ Awards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-project-diagram text-blue-500"></i>
+                            </div>
+                            <span class="text-sm font-medium">50+ Projects</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="hero-subtitle">Creating digital experiences that inspire and engage</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary pulse">Hire Me</a>
-                    <a href="#projects" class="btn btn-secondary">View Work</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-container">
-                    <img src="https://via.placeholder.com/400x400" alt="David Nkemitag" class="profile-img">
-                    <div class="tech-icons">
-                        <i class="fab fa-html5 html"></i>
-                        <i class="fab fa-css3-alt css"></i>
-                        <i class="fab fa-js-square js"></i>
-                        <i class="fab fa-react react"></i>
-                        <i class="fab fa-python python"></i>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="David Nkemitag" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-8 border-white shadow-2xl floating">
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                    <i class="fas fa-trophy text-blue-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-800">5+ Years</p>
+                                    <p class="text-sm text-gray-600">Experience</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-down">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </header>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title">About <span>Me</span></h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="highlight">Hi, I'm <strong>David Nkemitag</strong>, a passionate web designer and developer with expertise in creating beautiful, responsive, and accessible digital experiences.</p>
-                    <p>With a strong foundation in both design and development, I bridge the gap between aesthetics and functionality. My approach combines creative problem-solving with technical precision to deliver websites that not only look stunning but perform exceptionally.</p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h3>Education</h3>
-                                <p>Computer Science Degree</p>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h3>Experience</h3>
-                                <p>5+ Years in Web Development</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
-                        <a href="#"><i class="fab fa-behance"></i></a>
-                    </div>
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="David Nkemitag" class="rounded-lg w-64 h-64 object-cover shadow-xl">
                 </div>
-                <div class="about-skills">
-                    <div class="skill-meter">
-                        <h3>HTML/CSS <span>95%</span></h3>
-                        <div class="meter"><span style="width: 95%"></span></div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4">Award-Winning Web Designer</h3>
+                    <p class="text-gray-600 mb-6">
+                        I'm a passionate web designer and developer with over 5 years of experience creating stunning digital experiences. My approach combines aesthetic design with technical excellence to deliver websites that not only look beautiful but perform exceptionally.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        I specialize in responsive design, user experience optimization, and creating websites that align perfectly with brand identities. My goal is to help businesses establish a powerful online presence that converts visitors into customers.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Responsive Design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">UI/UX Optimization</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Brand Alignment</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <span class="text-gray-700">Performance Focused</span>
+                        </div>
                     </div>
-                    <div class="skill-meter">
-                        <h3>JavaScript <span>90%</span></h3>
-                        <div class="meter"><span style="width: 90%"></span></div>
-                    </div>
-                    <div class="skill-meter">
-                        <h3>React <span>85%</span></h3>
-                        <div class="meter"><span style="width: 85%"></span></div>
-                    </div>
-                    <div class="skill-meter">
-                        <h3>UI/UX Design <span>88%</span></h3>
-                        <div class="meter"><span style="width: 88%"></span></div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Download CV <i class="fas fa-download ml-2"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            View Awards <i class="fas fa-trophy ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section with Animated Cards -->
-    <section id="skills" class="section skills-section">
-        <div class="container">
-            <h2 class="section-title">My <span>Skills</span></h2>
-            <p class="section-subtitle">Technologies I work with</p>
-            <div class="skills-grid">
-                <div class="skill-card" data-skill="html">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <h3>HTML5</h3>
-                    <p>Semantic markup, accessibility, modern standards</p>
-                </div>
-                <div class="skill-card" data-skill="css">
-                    <div class="skill-icon">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3>CSS3</h3>
-                    <p>Animations, Flexbox, Grid, responsive design</p>
-                </div>
-                <div class="skill-card" data-skill="js">
-                    <div class="skill-icon">
-                        <i class="fab fa-js"></i>
-                    </div>
-                    <h3>JavaScript</h3>
-                    <p>ES6+, DOM manipulation, async programming</p>
-                </div>
-                <div class="skill-card" data-skill="react">
-                    <div class="skill-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3>React</h3>
-                    <p>Hooks, Context API, Redux, performance</p>
-                </div>
-                <div class="skill-card" data-skill="node">
-                    <div class="skill-icon">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3>Node.js</h3>
-                    <p>Express, REST APIs, authentication</p>
-                </div>
-                <div class="skill-card" data-skill="python">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Django, Flask, data processing</p>
-                </div>
-                <div class="skill-card" data-skill="database">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Databases</h3>
-                    <p>MySQL, MongoDB, PostgreSQL</p>
-                </div>
-                <div class="skill-card" data-skill="accessibility">
-                    <div class="skill-icon">
-                        <i class="fas fa-universal-access"></i>
-                    </div>
-                    <h3>Accessibility</h3>
-                    <p>WCAG 2.x AA, AODA compliance</p>
-                </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">I combine design expertise with technical skills to create comprehensive digital solutions.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section with Interactive Gallery -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title">My <span>Projects</span></h2>
-            <p class="section-subtitle">A selection of my recent work</p>
-            
-            <div class="project-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web Design</button>
-                <button class="filter-btn" data-filter="app">Web Apps</button>
-                <button class="filter-btn" data-filter="game">Games</button>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Basketball Game Project -->
-                <div class="project-card" data-category="game">
-                    <div class="project-img">
-                        <div class="game-preview-container">
-                            <canvas id="basketball-game-preview" width="600" height="400"></canvas>
-                            <div class="game-controls">
-                                <button class="game-btn shoot-btn">Shoot</button>
-                                <button class="game-btn reset-btn">Reset</button>
-                                <div class="score-display">Score: <span>0</span></div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Basketball Game</h3>
-                        <p>Interactive web-based game with realistic physics built using JavaScript and Canvas API</p>
-                        <div class="project-tags">
-                            <span>JavaScript</span>
-                            <span>Canvas API</span>
-                            <span>Game Design</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="web">
-                    <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="E-commerce Website">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Platform</h3>
-                        <p>Full-featured online store with payment integration</p>
-                        <div class="project-tags">
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="Portfolio Website">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Portfolio CMS</h3>
-                        <p>Custom portfolio system with admin panel</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-category="app">
-                    <div class="project-img">
-                        <img src="https://via.placeholder.com/600x400" alt="Single Page Application">
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-link"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Business Dashboard</h3>
-                        <p>Data visualization SPA with real-time updates</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>D3.js</span>
-                            <span>REST API</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="view-more">
-                <a href="#" class="btn btn-outline">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section with Carousel -->
-    <section id="testimonials" class="section testimonials-section">
-        <div class="container">
-            <h2 class="section-title">Client <span>Testimonials</span></h2>
-            <p class="section-subtitle">What people say about my work</p>
-            
-            <div class="testimonials-carousel">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <div class="testimonial-img">
-                            <img src="https://via.placeholder.com/150" alt="Client 1">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"David transformed our outdated website into a modern, user-friendly platform that has significantly increased our conversion rates. His attention to detail and creative solutions were impressive."</p>
-                            <div class="testimonial-author">
-                                <h4>Sarah Johnson</h4>
-                                <span>Marketing Director, TechCorp</span>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="testimonial-img">
-                            <img src="https://via.placeholder.com/150" alt="Client 2">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"Working with David was a pleasure. He delivered our e-commerce site ahead of schedule and under budget. The site is not only beautiful but also performs exceptionally well on all devices."</p>
-                            <div class="testimonial-author">
-                                <h4>Michael Chen</h4>
-                                <span>CEO, ShopOnline</span>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="testimonial-img">
-                            <img src="https://via.placeholder.com/150" alt="Client 3">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"David's expertise in accessibility compliance was invaluable for our government project. He ensured our application met all WCAG standards without compromising on design or functionality."</p>
-                            <div class="testimonial-author">
-                                <h4>Emily Rodriguez</h4>
-                                <span>Project Manager, GovDigital</span>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-controls">
-                    <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="carousel-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section with Interactive Form -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In <span>Touch</span></h2>
-            <p class="section-subtitle">Let's work together on your next project</p>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Design Skills</h3>
+                    <div class="space-y-6">
                         <div>
-                            <h3>Location</h3>
-                            <p>Toronto, Canada</p>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">UI/UX Design</span>
+                                <span class="text-blue-500">95%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
                         <div>
-                            <h3>Email</h3>
-                            <p>dnkemitag@gmail.com</p>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Wireframing</span>
+                                <span class="text-blue-500">90%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
                         <div>
-                            <h3>Phone</h3>
-                            <p>+1 (647) 781-1653</p>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Prototyping</span>
+                                <span class="text-blue-500">85%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="contact-social">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Brand Identity</span>
+                                <span class="text-blue-500">88%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required>
-                        <label for="name">Your Name</label>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span class="text-blue-500">98%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">JavaScript</span>
+                                <span class="text-blue-500">90%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">React</span>
+                                <span class="text-blue-500">85%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Node.js</span>
+                                <span class="text-blue-500">80%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required>
-                        <label for="email">Your Email</label>
+                </div>
+            </div>
+            <div class="mt-16">
+                <h3 class="text-xl font-semibold mb-8 text-center">Tools & Technologies</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-figma text-4xl text-purple-500 mb-3"></i>
+                        <span class="font-medium">Figma</span>
                     </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" required>
-                        <label for="subject">Subject</label>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-adobe text-4xl text-red-500 mb-3"></i>
+                        <span class="font-medium">Adobe XD</span>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" required></textarea>
-                        <label for="message">Your Message</label>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-sketch text-4xl text-yellow-500 mb-3"></i>
+                        <span class="font-medium">Sketch</span>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-react text-4xl text-blue-400 mb-3"></i>
+                        <span class="font-medium">React</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-node-js text-4xl text-green-500 mb-3"></i>
+                        <span class="font-medium">Node.js</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                        <i class="fab fa-python text-4xl text-blue-600 mb-3"></i>
+                        <span class="font-medium">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">A selection of my recent work showcasing my design and development capabilities.</p>
+            </div>
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="all">
+                        All
                     </button>
-                </form>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="web">
+                        Web Design
+                    </button>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="app">
+                        Web Apps
+                    </button>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-r-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="game">
+                        Games
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 - Basketball Game -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="game">
+                    <div class="game-preview-container">
+                        <canvas id="basketball-game-preview" width="600" height="400"></canvas>
+                        <div class="game-controls">
+                            <button class="game-btn shoot-btn">Shoot</button>
+                            <button class="game-btn reset-btn">Reset</button>
+                            <div class="score-display">Score: <span>0</span></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Basketball Game</h3>
+                        <p class="text-gray-600 mb-4">Interactive web-based game with realistic physics built using JavaScript and Canvas API</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Canvas API</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 - E-commerce -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="web">
+                    <div class="h-64 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">Full-featured online store with payment integration and admin dashboard</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 - Portfolio CMS -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
+                    <div class="h-64 bg-gradient-to-r from-green-500 to-teal-400 flex items-center justify-center">
+                        <i class="fas fa-user-tie text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio CMS</h3>
+                        <p class="text-gray-600 mb-4">Custom portfolio system with content management and analytics</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 - Business Dashboard -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
+                    <div class="h-64 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Business Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Data visualization SPA with real-time updates and custom reporting</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">D3.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">REST API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 - Restaurant Website -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="web">
+                    <div class="h-64 bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center">
+                        <i class="fas fa-utensils text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Restaurant Website</h3>
+                        <p class="text-gray-600 mb-4">Modern responsive website with online ordering system</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 - Fitness App -->
+                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
+                    <div class="h-64 bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fitness Tracker App</h3>
+                        <p class="text-gray-600 mb-4">Mobile-first application for tracking workouts and nutrition</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React Native</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Firebase</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Redux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client <span class="gradient-text">Testimonials</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">What my clients and colleagues say about my work.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "David completely transformed our website. The new design increased our conversion rate by 40% and perfectly represents our brand. His attention to detail and understanding of our business needs was exceptional."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">Marketing Director, FitLife</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "Working with David on our mobile app was a game-changer. He took our vague ideas and turned them into a beautiful, intuitive interface. His UX expertise helped us create an app our customers love using daily."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold">Emma Rodriguez</h4>
+                            <p class="text-gray-500 text-sm">Founder, Café Luna</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "David created our entire brand identity from scratch. He captured the essence of our café perfectly - warm, inviting, and unique. The logo and visual elements he designed have become instantly recognizable in our community."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Client Logos -->
+            <div class="mt-16 pt-8 border-t border-gray-200">
+                <h3 class="text-center text-xl font-semibold mb-8">Trusted By</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                    <img src="https://via.placeholder.com/150x60?text=TechSolutions" alt="TechSolutions" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="https://via.placeholder.com/150x60?text=FitLife" alt="FitLife" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="https://via.placeholder.com/150x60?text=Café+Luna" alt="Café Luna" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="https://via.placeholder.com/150x60?text=GlobalBank" alt="GlobalBank" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="https://via.placeholder.com/150x60?text=StartUpX" alt="StartUpX" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Have a project in mind or want to discuss potential collaboration? I'd love to hear from you.</p>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-bold mb-6">Let's Talk About Your Project</h3>
+                    <p class="text-gray-600 mb-8">
+                        Whether you have a question about my services, want to discuss a potential project, or just want to say hi, I'll get back to you as soon as possible.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="text-gray-600">dnkemitag@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Phone</p>
+                                <p class="text-gray-600">+1 (647) 781-1653</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Location</p>
+                                <p class="text-gray-600">Toronto, Canada</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition duration-300">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>David Nkemitag</h2>
-                    <p>Web Designer & Developer</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-xl font-bold gradient-text">DAVID NKEMITAG</a>
+                    <p class="text-gray-400 mt-2">Creating beautiful digital experiences.</p>
                 </div>
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-services">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Accessibility Audits</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to my newsletter for the latest updates.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-behance"></i>
+                    </a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 David Nkemitag. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 David Nkemitag. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" aria-label="Back to top">
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition opacity-0 invisible">
         <i class="fas fa-arrow-up"></i>
-    </a>
+    </button>
 
-    <!-- JavaScript Files -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Filter portfolio items
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('bg-blue-500', 'text-white'));
+                
+                // Add active class to clicked button
+                this.classList.add('bg-blue-500', 'text-white');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Highlight active navigation link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Simple basketball game for the project preview
+        const canvas = document.getElementById('basketball-game-preview');
+        const ctx = canvas.getContext('2d');
+        let score = 0;
+        
+        // Game elements
+        const hoop = {
+            x: canvas.width - 100,
+            y: 150,
+            width: 60,
+            height: 5,
+            rimWidth: 80,
+            rimHeight: 5
+        };
+        
+        const backboard = {
+            x: hoop.x - 10,
+            y: hoop.y - 100,
+            width: 10,
+            height: 100
+        };
+        
+        const ball = {
+            x: 100,
+            y: canvas.height - 50,
+            radius: 15,
+            dx: 0,
+            dy: 0,
+            gravity: 0.2,
+            friction: 0.99,
+            isMoving: false
+        };
+        
+        // Draw game elements
+        function draw() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw backboard
+            ctx.fillStyle = 'white';
+            ctx.fillRect(backboard.x, backboard.y, backboard.width, backboard.height);
+            
+            // Draw hoop
+            ctx.fillStyle = 'red';
+            ctx.fillRect(hoop.x, hoop.y, hoop.width, hoop.height);
+            
+            // Draw rim
+            ctx.fillStyle = 'orange';
+            ctx.fillRect(hoop.x - 10, hoop.y, hoop.rimWidth, hoop.rimHeight);
+            
+            // Draw ball
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'orange';
+            ctx.fill();
+            ctx.strokeStyle = 'black';
+            ctx.stroke();
+            ctx.closePath();
+            
+            // Draw score
+            ctx.fillStyle = 'white';
+            ctx.font = '20px Arial';
+            ctx.fillText(`Score: ${score}`, 20, 30);
+        }
+        
+        // Update game state
+        function update() {
+            if (ball.isMoving) {
+                // Apply gravity
+                ball.dy += ball.gravity;
+                
+                // Apply friction
+                ball.dx *= ball.friction;
+                ball.dy *= ball.friction;
+                
+                // Update position
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+                
+                // Check collision with floor
+                if (ball.y + ball.radius > canvas.height) {
+                    ball.y = canvas.height - ball.radius;
+                    ball.dy = -ball.dy * 0.6;
+                    ball.dx *= 0.8;
+                    
+                    if (Math.abs(ball.dy) < 1) {
+                        ball.isMoving = false;
+                    }
+                }
+                
+                // Check collision with walls
+                if (ball.x - ball.radius < 0) {
+                    ball.x = ball.radius;
+                    ball.dx = -ball.dx * 0.8;
+                }
+                
+                if (ball.x + ball.radius > canvas.width) {
+                    ball.x = canvas.width - ball.radius;
+                    ball.dx = -ball.dx * 0.8;
+                }
+                
+                // Check scoring
+                if (ball.y + ball.radius > hoop.y && 
+                    ball.y - ball.radius < hoop.y + hoop.height && 
+                    ball.x + ball.radius > hoop.x && 
+                    ball.x - ball.radius < hoop.x + hoop.width) {
+                    
+                    // Check if ball is coming from above
+                    if (ball.dy > 0) {
+                        score++;
+                        document.querySelector('.score-display span').textContent = score;
+                        resetBall();
+                    }
+                }
+            }
+        }
+        
+        // Game loop
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Reset ball to starting position
+        function resetBall() {
+            ball.x = 100;
+            ball.y = canvas.height - 50;
+            ball.dx = 0;
+            ball.dy = 0;
+            ball.isMoving = false;
+        }
+        
+        // Shoot the ball
+        function shootBall() {
+            if (!ball.isMoving) {
+                ball.dx = 8 + Math.random() * 2;
+                ball.dy = -12 - Math.random() * 3;
+                ball.isMoving = true;
+            }
+        }
+        
+        // Event listeners for game controls
+        document.querySelector('.shoot-btn').addEventListener('click', shootBall);
+        document.querySelector('.reset-btn').addEventListener('click', resetBall);
+        
+        // Start the game
+        gameLoop();
+    </script>
 </body>
 </html>
