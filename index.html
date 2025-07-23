@@ -213,6 +213,19 @@
             color: #f9ca24;
             font-size: 1.1em;
         }
+
+        .profile-icon {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -288,7 +301,9 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="David Nkemitag" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-8 border-white shadow-2xl floating">
+                        <div class="profile-icon floating">
+                            <i class="fas fa-code"></i>
+                        </div>
                         <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
                             <div class="flex items-center">
                                 <div class="bg-blue-100 p-3 rounded-full mr-3">
@@ -315,7 +330,9 @@
             </div>
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="David Nkemitag" class="rounded-lg w-64 h-64 object-cover shadow-xl">
+                    <div class="profile-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
                 </div>
                 <div class="md:w-2/3 md:pl-12">
                     <h3 class="text-2xl font-bold mb-4">Award-Winning Web Designer</h3>
@@ -471,7 +488,7 @@
                         <i class="fab fa-sketch text-4xl text-yellow-500 mb-3"></i>
                         <span class="font-medium">Sketch</span>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
+                    <div class="bg-white p=6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
                         <i class="fab fa-react text-4xl text-blue-400 mb-3"></i>
                         <span class="font-medium">React</span>
                     </div>
@@ -515,7 +532,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 - Basketball Game -->
                 <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="game">
-                    <div class="game-preview-container">
+                    <div class="game-p preview-container">
                         <canvas id="basketball-game-preview" width="600" height="400"></canvas>
                         <div class="game-controls">
                             <button class="game-btn shoot-btn">Shoot</button>
@@ -528,7 +545,7 @@
                         <p class="text-gray-600 mb-4">Interactive web-based game with realistic physics built using JavaScript and Canvas API</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Canvas API</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px=2 py-1 rounded">Canvas API</span>
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Game Design</span>
                         </div>
                     </div>
@@ -558,7 +575,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Portfolio CMS</h3>
                         <p class="text-gray-600 mb-4">Custom portfolio system with content management and analytics</p>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap=2">
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MongoDB</span>
@@ -604,7 +621,7 @@
                         <i class="fas fa-dumbbell text-white text-6xl"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Fitness Tracker App</h3>
+                        <h3 class="text-xl font-bold mb=2">Fitness Tracker App</h3>
                         <p class="text-gray-600 mb-4">Mobile-first application for tracking workouts and nutrition</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React Native</span>
@@ -624,7 +641,7 @@
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px=4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Client <span class="gradient-text">Testimonials</span></h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
@@ -634,7 +651,9 @@
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card bg-white p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
                         <div>
                             <h4 class="font-bold">Sarah Johnson</h4>
                             <p class="text-gray-500 text-sm">CEO, TechSolutions</p>
@@ -655,7 +674,9 @@
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card bg-white p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
                         <div>
                             <h4 class="font-bold">Michael Chen</h4>
                             <p class="text-gray-500 text-sm">Marketing Director, FitLife</p>
@@ -676,7 +697,9 @@
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card bg-white p-8 rounded-lg">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
                         <div>
                             <h4 class="font-bold">Emma Rodriguez</h4>
                             <p class="text-gray-500 text-sm">Founder, Café Luna</p>
@@ -694,7 +717,7 @@
                     </div>
                 </div>
             </div>
-            
+                    
             <!-- Client Logos -->
             <div class="mt-16 pt-8 border-t border-gray-200">
                 <h3 class="text-center text-xl font-semibold mb-8">Trusted By</h3>
@@ -702,7 +725,7 @@
                     <img src="https://via.placeholder.com/150x60?text=TechSolutions" alt="TechSolutions" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
                     <img src="https://via.placeholder.com/150x60?text=FitLife" alt="FitLife" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
                     <img src="https://via.placeholder.com/150x60?text=Café+Luna" alt="Café Luna" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
-                    <img src="https://via.placeholder.com/150x60?text=GlobalBank" alt="GlobalBank" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
+                    <img src="https://via.placeholder.com/150x60?text=GlobalBank" alt="GlobalBank" class="h-12 object-contain opacity=70 hover:opacity-100 transition">
                     <img src="https://via.placeholder.com/150x60?text=StartUpX" alt="StartUpX" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
                 </div>
             </div>
@@ -758,7 +781,7 @@
                             <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
+                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray=700 hover:bg-blue-100 hover:text-blue-500 transition">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                             <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
@@ -779,7 +802,7 @@
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray=300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                             </div>
                         </div>
                         <div>
