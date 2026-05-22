@@ -3,1110 +3,1350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Nkemitag - Award-Winning Web Designer & Developer</title>
+    <title>David Nkemitag — Web Designer & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            --primary: #3b82f6;
-            --secondary: #8b5cf6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #f8fafc;
-            color: #1e293b;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active::after {
-            width: 100%;
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        
-        .project-overlay {
-            transition: all 0.3s ease;
-            opacity: 0;
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        .skill-meter {
-            height: 8px;
-            border-radius: 4px;
-            background-color: #e2e8f0;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 1s ease-in-out;
-        }
-        
-        .testimonial-card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            animation: 
-                typing 3.5s steps(40, end),
-                blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary) }
-        }
-        
-        /* Basketball Game Specific Styles */
-        .game-preview-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
-            border-radius: 8px 8px 0 0;
-            overflow: hidden;
-        }
-        
-        #basketball-game-preview {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .game-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
-        
-        .game-btn {
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .game-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .shoot-btn {
-            background: #ff6b6b;
-            color: white;
-        }
-        
-        .reset-btn {
-            background: #4ecdc4;
-            color: white;
-        }
-        
-        .score-display {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        
-        .score-display span {
-            color: #f9ca24;
-            font-size: 1.1em;
+            --ink: #0a0a0f;
+            --paper: #f4f1ea;
+            --electric: #00e5ff;
+            --fire: #ff4d00;
+            --gold: #ffd600;
+            --mid: #1a1a2e;
+            --soft: #e8e4dc;
         }
 
-        .profile-icon {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 80px;
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(244,241,234,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--ink);
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 2rem; height: 72px;
+        }
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700; font-size: 1.1rem;
+            text-decoration: none; color: var(--ink);
+            letter-spacing: -1px;
+        }
+        .nav-logo span { color: var(--fire); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--ink);
+            font-weight: 600; font-size: 0.85rem;
+            letter-spacing: 1px; text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--fire); }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: 0.3s; }
+        .mobile-menu {
+            display: none; position: fixed; top: 72px; left: 0; right: 0;
+            background: var(--paper); border-bottom: 2px solid var(--ink);
+            padding: 1.5rem 2rem; z-index: 99;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block; padding: 0.75rem 0;
+            font-weight: 700; color: var(--ink); text-decoration: none;
+            border-bottom: 1px solid var(--soft); font-size: 1.1rem;
+        }
+
+        /* ─── HERO ─── */
+        #home {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 100px 2rem 4rem;
+            background: var(--paper);
+            position: relative; overflow: hidden;
+        }
+        .hero-grid {
+            max-width: 1280px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .hero-tag {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+            background: var(--fire); color: white;
+            padding: 4px 12px; margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800; line-height: 1.0;
+            margin-bottom: 1.5rem; letter-spacing: -2px;
+        }
+        .hero-title .accent { color: var(--fire); display: block; }
+        .hero-sub {
+            font-size: 1.1rem; color: #555; max-width: 440px;
+            line-height: 1.7; margin-bottom: 2.5rem;
+        }
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--ink); color: white;
+            padding: 14px 28px; font-weight: 700; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 0.5px;
+            border: 2px solid var(--ink); transition: 0.2s;
+            display: inline-block;
+        }
+        .btn-primary:hover { background: var(--fire); border-color: var(--fire); }
+        .btn-outline {
+            background: transparent; color: var(--ink);
+            padding: 14px 28px; font-weight: 700; text-decoration: none;
+            font-size: 0.9rem; letter-spacing: 0.5px;
+            border: 2px solid var(--ink); transition: 0.2s;
+        }
+        .btn-outline:hover { background: var(--ink); color: white; }
+        .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; }
+        .stat-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem; font-weight: 700; color: var(--fire);
+        }
+        .stat-label { font-size: 0.8rem; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+        .hero-visual {
+            position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .hero-avatar {
+            width: 260px; height: 260px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--fire), var(--gold));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 100px; color: white;
+            border: 4px solid var(--ink);
+            box-shadow: 8px 8px 0 var(--ink);
+            animation: bob 5s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .hero-badge {
+            position: absolute; bottom: 10px; right: 10px;
+            background: var(--paper); border: 2px solid var(--ink);
+            padding: 12px 16px;
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+        .badge-inner { display: flex; align-items: center; gap: 10px; }
+        .badge-icon { font-size: 1.5rem; color: var(--fire); }
+        .badge-text strong { display: block; font-size: 1rem; font-weight: 800; }
+        .badge-text span { font-size: 0.75rem; color: #777; }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 80px 2rem; }
+        .section-inner { max-width: 1280px; margin: 0 auto; }
+        .section-header { margin-bottom: 4rem; }
+        .section-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--fire); font-weight: 700; margin-bottom: 0.75rem;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+        }
+
+        /* ─── ABOUT ─── */
+        #about { background: var(--ink); color: var(--paper); }
+        #about .section-tag { color: var(--electric); }
+        #about .section-title { color: var(--paper); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr;
+            gap: 5rem; align-items: center;
+        }
+        .about-avatar {
+            width: 280px; height: 280px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--electric), #0077ff);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 110px; color: var(--ink);
+            border: 4px solid var(--paper);
+        }
+        .about-text p { color: #aaa; line-height: 1.8; margin-bottom: 1.5rem; }
+        .about-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+        .chip {
+            border: 1.5px solid #333;
+            color: #bbb; padding: 6px 14px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+        }
+        .about-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-light {
+            background: var(--paper); color: var(--ink);
+            padding: 12px 24px; font-weight: 700;
+            border: 2px solid var(--paper); text-decoration: none;
+            font-size: 0.85rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-light:hover { background: var(--electric); border-color: var(--electric); }
+        .btn-ghost {
+            background: transparent; color: var(--paper);
+            padding: 12px 24px; font-weight: 700;
+            border: 2px solid #444; text-decoration: none;
+            font-size: 0.85rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-ghost:hover { border-color: var(--electric); color: var(--electric); }
+
+        /* ─── SKILLS ─── */
+        #skills { background: var(--soft); }
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .skill-block { background: white; padding: 2.5rem; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+        .skill-block h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .skill-row { margin-bottom: 1.5rem; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .skill-name { font-weight: 600; font-size: 0.9rem; }
+        .skill-pct { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--fire); font-weight: 700; }
+        .skill-bar { height: 6px; background: #eee; }
+        .skill-fill { height: 100%; background: linear-gradient(90deg, var(--fire), var(--gold)); transition: width 1.2s ease; }
+        .tools-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-top: 3rem; }
+        .tool-pill {
+            background: white; border: 2px solid var(--ink); padding: 1.2rem 0.5rem;
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            font-size: 0.75rem; font-weight: 700;
+            box-shadow: 3px 3px 0 var(--ink); transition: 0.15s; cursor: default;
+        }
+        .tool-pill:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+        .tool-pill i { font-size: 1.6rem; }
+
+        /* ─── PROJECTS ─── */
+        #projects { background: var(--paper); }
+        .filter-row { display: flex; gap: 0; margin-bottom: 3rem; flex-wrap: wrap; }
+        .filt {
+            padding: 10px 20px; background: white; border: 2px solid var(--ink);
+            font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;
+            text-transform: uppercase; cursor: pointer; margin-right: -2px; transition: 0.15s;
+        }
+        .filt.active, .filt:hover { background: var(--ink); color: white; }
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .proj-card {
+            background: white; border: 2px solid var(--ink);
+            box-shadow: 6px 6px 0 var(--ink); transition: 0.2s; overflow: hidden;
+        }
+        .proj-card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+        .proj-thumb {
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; color: white; position: relative; overflow: hidden;
+        }
+        .proj-body { padding: 1.5rem; }
+        .proj-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .proj-desc { font-size: 0.85rem; color: #666; margin-bottom: 1rem; line-height: 1.6; }
+        .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem; padding: 3px 8px;
+            background: var(--soft); border: 1px solid #ccc; font-weight: 400;
+        }
+
+        /* ─── ARCADE BASKETBALL GAME ─── */
+        .arcade-wrap {
+            background: var(--ink); border: 2px solid var(--ink);
+            box-shadow: 6px 6px 0 var(--ink); overflow: hidden;
+        }
+        .arcade-wrap:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+        .arcade-header {
+            background: var(--fire); padding: 0.6rem 1rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .arcade-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem; color: white; font-weight: 700; letter-spacing: 2px;
+        }
+        .arcade-dots { display: flex; gap: 6px; }
+        .arcade-dots span {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+        }
+        #arcade-canvas {
+            display: block; width: 100%; cursor: crosshair;
+            background: #0a0a1a;
+        }
+        .arcade-hud {
+            background: #111; padding: 0.75rem 1rem;
+            display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+        }
+        .hud-score {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem; color: var(--gold); font-weight: 700;
+        }
+        .hud-timer {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem; color: var(--electric);
+        }
+        .hud-streak {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem; color: var(--fire);
+        }
+        .hud-btn {
+            padding: 6px 16px; background: var(--fire); color: white;
+            border: none; font-family: 'Space Mono', monospace;
+            font-size: 0.75rem; font-weight: 700; cursor: pointer;
+            letter-spacing: 1px; transition: 0.15s;
+        }
+        .hud-btn:hover { background: var(--gold); color: var(--ink); }
+        .proj-body-game { padding: 0 1.5rem 1.5rem; }
+
+        /* ─── TESTIMONIALS ─── */
+        #testimonials { background: var(--ink); color: var(--paper); }
+        #testimonials .section-tag { color: var(--gold); }
+        #testimonials .section-title { color: var(--paper); }
+        .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testi-card {
+            background: #111; border: 2px solid #222;
+            padding: 2rem; transition: 0.2s;
+        }
+        .testi-card:hover { border-color: var(--electric); transform: translateY(-4px); }
+        .testi-stars { color: var(--gold); margin-bottom: 1rem; font-size: 0.9rem; }
+        .testi-quote { color: #bbb; line-height: 1.8; font-size: 0.9rem; margin-bottom: 1.5rem; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 1rem; }
+        .testi-avatar {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--fire), var(--gold));
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 800;
+        }
+        .testi-name { font-weight: 700; font-size: 0.9rem; }
+        .testi-role { font-size: 0.75rem; color: #666; }
+
+        /* ─── CONTACT ─── */
+        #contact { background: var(--paper); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+        .contact-info h3 { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 1rem; }
+        .contact-info p { color: #666; line-height: 1.8; margin-bottom: 2rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+        .contact-icon {
+            width: 44px; height: 44px;
+            background: var(--fire); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; flex-shrink: 0;
+        }
+        .contact-detail strong { display: block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .contact-detail span { font-size: 0.9rem; color: #555; }
+        .socials { display: flex; gap: 0.75rem; margin-top: 2rem; }
+        .social-btn {
+            width: 42px; height: 42px; border: 2px solid var(--ink);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink); text-decoration: none; transition: 0.15s; font-size: 0.9rem;
+        }
+        .social-btn:hover { background: var(--ink); color: white; }
+
+        /* CONTACT FORM */
+        .contact-form-wrap {
+            background: white; border: 2px solid var(--ink);
+            padding: 2.5rem; box-shadow: 8px 8px 0 var(--ink);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block; font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%; padding: 12px 14px;
+            border: 2px solid #ddd; font-family: 'Syne', sans-serif;
+            font-size: 0.9rem; background: var(--paper);
+            transition: border-color 0.2s; outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus { border-color: var(--fire); }
+        .form-group textarea { min-height: 130px; resize: vertical; }
+        .form-submit {
+            width: 100%; padding: 15px;
+            background: var(--ink); color: white;
+            border: 2px solid var(--ink); font-family: 'Space Mono', monospace;
+            font-size: 0.9rem; font-weight: 700; cursor: pointer;
+            letter-spacing: 1px; text-transform: uppercase; transition: 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .form-submit:hover { background: var(--fire); border-color: var(--fire); }
+        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-msg {
+            margin-top: 1rem; padding: 12px 16px;
+            font-size: 0.85rem; font-weight: 600; display: none;
+        }
+        .form-msg.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block; }
+        .form-msg.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--ink); color: var(--paper);
+            padding: 3rem 2rem; text-align: center;
+        }
+        .footer-inner { max-width: 1280px; margin: 0 auto; }
+        .footer-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .footer-logo span { color: var(--fire); }
+        .footer-copy { color: #555; font-size: 0.8rem; margin-top: 1.5rem; }
+
+        /* ─── BACK TO TOP ─── */
+        #back-top {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 46px; height: 46px;
+            background: var(--fire); color: white;
+            border: none; cursor: pointer; font-size: 1rem;
+            opacity: 0; pointer-events: none; transition: 0.3s;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+        #back-top.show { opacity: 1; pointer-events: all; }
+        #back-top:hover { background: var(--ink); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .projects-grid { grid-template-columns: 1fr 1fr; }
+            .tools-row { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .testi-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .about-avatar, .hero-avatar { margin: 0 auto; }
+            .tools-row { grid-template-columns: repeat(3, 1fr); }
+            .hero-stats { gap: 1.5rem; }
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center">
-                    <a href="#home" class="text-xl font-bold gradient-text">DAVID NKEMITAG</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500 transition">About</a>
-                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-500 transition">Skills</a>
-                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-500 transition">Projects</a>
-                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-500 transition">Testimonials</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500 transition">Contact</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="menu-toggle" class="text-gray-700 hover:text-blue-500 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">About</a>
-                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Skills</a>
-                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Projects</a>
-                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Testimonials</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-500 hover:bg-gray-50">Contact</a>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-                        Hi, I'm <span class="gradient-text">David Nkemitag</span>
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6 typewriter">Web Designer & Developer</h2>
-                    <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                        I create beautiful, functional websites that deliver exceptional user experiences and measurable business results.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
-                            View My Work
-                        </a>
-                        <a href="#contact" class="px-6 py-3 border-2 border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-50 transition duration-300">
-                            Contact Me
-                        </a>
-                    </div>
-                    <div class="mt-8 flex space-x-4">
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                <i class="fas fa-award text-blue-500"></i>
-                            </div>
-                            <span class="text-sm font-medium">5+ Awards</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                <i class="fas fa-project-diagram text-blue-500"></i>
-                            </div>
-                            <span class="text-sm font-medium">50+ Projects</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <div class="profile-icon floating">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
-                            <div class="flex items-center">
-                                <div class="bg-blue-100 p-3 rounded-full mr-3">
-                                    <i class="fas fa-trophy text-blue-500 text-xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-800">5+ Years</p>
-                                    <p class="text-sm text-gray-600">Experience</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#home" class="nav-logo">DN<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
         </div>
-    </section>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+</div>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
+<!-- HERO -->
+<section id="home">
+    <div class="hero-grid">
+        <div>
+            <span class="hero-tag">Available for work</span>
+            <h1 class="hero-title">
+                David<br>
+                <span class="accent">Nkemitag</span>
+            </h1>
+            <p class="hero-sub">Web designer & developer crafting beautiful digital experiences that convert visitors into customers.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn-primary">View Work</a>
+                <a href="#contact" class="btn-outline">Hire Me</a>
             </div>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="profile-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                </div>
-                <div class="md:w-2/3 md:pl-12">
-                    <h3 class="text-2xl font-bold mb-4">Award-Winning Web Designer</h3>
-                    <p class="text-gray-600 mb-6">
-                        I'm a passionate web designer and developer with over 5 years of experience creating stunning digital experiences. My approach combines aesthetic design with technical excellence to deliver websites that not only look beautiful but perform exceptionally.
-                    </p>
-                    <p class="text-gray-600 mb-6">
-                        I specialize in responsive design, user experience optimization, and creating websites that align perfectly with brand identities. My goal is to help businesses establish a powerful online presence that converts visitors into customers.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-blue-500"></i>
-                            </div>
-                            <span class="text-gray-700">Responsive Design</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-blue-500"></i>
-                            </div>
-                            <span class="text-gray-700">UI/UX Optimization</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-blue-500"></i>
-                            </div>
-                            <span class="text-gray-700">Brand Alignment</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-blue-500"></i>
-                            </div>
-                            <span class="text-gray-700">Performance Focused</span>
-                        </div>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            Download CV <i class="fas fa-download ml-2"></i>
-                        </a>
-                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            View Awards <i class="fas fa-trophy ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">I combine design expertise with technical skills to create comprehensive digital solutions.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="hero-stats">
                 <div>
-                    <h3 class="text-xl font-semibold mb-6">Design Skills</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">UI/UX Design</span>
-                                <span class="text-blue-500">95%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Wireframing</span>
-                                <span class="text-blue-500">90%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Prototyping</span>
-                                <span class="text-blue-500">85%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Brand Identity</span>
-                                <span class="text-blue-500">88%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="stat-num">5+</div>
+                    <div class="stat-label">Years Exp.</div>
                 </div>
                 <div>
-                    <h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">HTML/CSS</span>
-                                <span class="text-blue-500">98%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 98%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">JavaScript</span>
-                                <span class="text-blue-500">90%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">React</span>
-                                <span class="text-blue-500">85%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Node.js</span>
-                                <span class="text-blue-500">80%</span>
-                            </div>
-                            <div class="skill-meter">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div>
+                    <div class="stat-num">5</div>
+                    <div class="stat-label">Awards</div>
                 </div>
             </div>
-            <div class="mt-16">
-                <h3 class="text-xl font-semibold mb-8 text-center">Tools & Technologies</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-figma text-4xl text-purple-500 mb-3"></i>
-                        <span class="font-medium">Figma</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-adobe text-4xl text-red-500 mb-3"></i>
-                        <span class="font-medium">Adobe XD</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-sketch text-4xl text-yellow-500 mb-3"></i>
-                        <span class="font-medium">Sketch</span>
-                    </div>
-                    <div class="bg-white p=6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-react text-4xl text-blue-400 mb-3"></i>
-                        <span class="font-medium">React</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-node-js text-4xl text-green-500 mb-3"></i>
-                        <span class="font-medium">Node.js</span>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center">
-                        <i class="fab fa-python text-4xl text-blue-600 mb-3"></i>
-                        <span class="font-medium">Python</span>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-avatar">👨‍💻</div>
+            <div class="hero-badge">
+                <div class="badge-inner">
+                    <div class="badge-icon">🏆</div>
+                    <div class="badge-text">
+                        <strong>Award Winner</strong>
+                        <span>5 Design Awards</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">A selection of my recent work showcasing my design and development capabilities.</p>
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div style="display:flex;justify-content:center;">
+                <div class="about-avatar">🧑‍🎨</div>
             </div>
-            <div class="flex justify-center mb-10">
-                <div class="inline-flex rounded-md shadow-sm">
-                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="all">
-                        All
+            <div>
+                <div class="section-header" style="margin-bottom:2rem;">
+                    <span class="section-tag">About Me</span>
+                    <h2 class="section-title">Award-Winning<br>Designer & Dev</h2>
+                </div>
+                <div class="about-text">
+                    <p>I'm a passionate web designer and developer with 5+ years building stunning digital experiences. I blend aesthetic design with technical excellence to deliver websites that look beautiful and perform exceptionally.</p>
+                    <p>I specialise in responsive design, UX optimisation, and brand-aligned development — helping businesses build powerful online presences that convert.</p>
+                </div>
+                <div class="about-chips">
+                    <span class="chip">Responsive Design</span>
+                    <span class="chip">UI/UX</span>
+                    <span class="chip">Brand Identity</span>
+                    <span class="chip">Performance</span>
+                    <span class="chip">Full-Stack</span>
+                    <span class="chip">Toronto, Canada</span>
+                </div>
+                <div class="about-actions">
+                    <a href="#" class="btn-light"><i class="fas fa-download"></i> Download CV</a>
+                    <a href="#" class="btn-ghost"><i class="fas fa-trophy"></i> View Awards</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Expertise</span>
+            <h2 class="section-title">My Skills</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-block">
+                <h3>Design</h3>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">UI/UX Design</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" data-w="95" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">Wireframing</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">Prototyping</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-w="85" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">Brand Identity</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-w="88" style="width:0"></div></div></div>
+            </div>
+            <div class="skill-block">
+                <h3>Development</h3>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">HTML/CSS</span><span class="skill-pct">98%</span></div><div class="skill-bar"><div class="skill-fill" data-w="98" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">React</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-w="85" style="width:0"></div></div></div>
+                <div class="skill-row"><div class="skill-info"><span class="skill-name">Node.js</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80" style="width:0"></div></div></div>
+            </div>
+        </div>
+        <div class="tools-row">
+            <div class="tool-pill"><i class="fab fa-figma" style="color:#a259ff"></i>Figma</div>
+            <div class="tool-pill"><i class="fab fa-adobe" style="color:#ff0000"></i>Adobe XD</div>
+            <div class="tool-pill"><i class="fab fa-react" style="color:#61dafb"></i>React</div>
+            <div class="tool-pill"><i class="fab fa-node-js" style="color:#68a063"></i>Node.js</div>
+            <div class="tool-pill"><i class="fab fa-python" style="color:#3572a5"></i>Python</div>
+            <div class="tool-pill"><i class="fab fa-git-alt" style="color:#f05032"></i>Git</div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">My Projects</h2>
+        </div>
+        <div class="filter-row">
+            <button class="filt active" data-f="all">All</button>
+            <button class="filt" data-f="web">Web Design</button>
+            <button class="filt" data-f="app">Web Apps</button>
+            <button class="filt" data-f="game">Games</button>
+        </div>
+        <div class="projects-grid">
+
+            <!-- ARCADE BASKETBALL GAME -->
+            <div class="proj-card" data-cat="game" style="border:2px solid var(--ink);">
+                <div class="arcade-wrap">
+                    <div class="arcade-header">
+                        <span class="arcade-title">🏀 ARCADE HOOPS</span>
+                        <div class="arcade-dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <canvas id="arcade-canvas" width="400" height="280"></canvas>
+                    <div class="arcade-hud">
+                        <div class="hud-score">⭐ <span id="g-score">000</span></div>
+                        <div class="hud-timer">⏱ <span id="g-timer">30</span>s</div>
+                        <div class="hud-streak">🔥 x<span id="g-streak">0</span></div>
+                        <button class="hud-btn" id="g-start">START</button>
+                    </div>
+                </div>
+                <div class="proj-body-game">
+                    <div class="proj-body" style="padding:1rem 0 0;">
+                        <div class="proj-title">Arcade Hoops Game</div>
+                        <div class="proj-desc">Click anywhere on court to aim & shoot. Chain baskets for streak bonuses! Built with Canvas API.</div>
+                        <div class="proj-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Canvas API</span>
+                            <span class="tag">Physics</span>
+                            <span class="tag">Game Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E-COMMERCE -->
+            <div class="proj-card" data-cat="web">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#667eea,#764ba2);">🛒</div>
+                <div class="proj-body">
+                    <div class="proj-title">E-Commerce Platform</div>
+                    <div class="proj-desc">Full-featured online store with payment integration and admin dashboard.</div>
+                    <div class="proj-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div>
+                </div>
+            </div>
+
+            <!-- PORTFOLIO CMS -->
+            <div class="proj-card" data-cat="app">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#11998e,#38ef7d);">👤</div>
+                <div class="proj-body">
+                    <div class="proj-title">Portfolio CMS</div>
+                    <div class="proj-desc">Custom portfolio system with content management and analytics.</div>
+                    <div class="proj-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD -->
+            <div class="proj-card" data-cat="app">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#c471ed,#f64f59);">📊</div>
+                <div class="proj-body">
+                    <div class="proj-title">Business Dashboard</div>
+                    <div class="proj-desc">Data visualisation SPA with real-time updates and custom reporting.</div>
+                    <div class="proj-tags"><span class="tag">React</span><span class="tag">D3.js</span><span class="tag">REST API</span></div>
+                </div>
+            </div>
+
+            <!-- RESTAURANT -->
+            <div class="proj-card" data-cat="web">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#f7971e,#ffd200);">🍽️</div>
+                <div class="proj-body">
+                    <div class="proj-title">Restaurant Website</div>
+                    <div class="proj-desc">Modern responsive website with online ordering system.</div>
+                    <div class="proj-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div>
+                </div>
+            </div>
+
+            <!-- FITNESS -->
+            <div class="proj-card" data-cat="app">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#ee0979,#ff6a00);">💪</div>
+                <div class="proj-body">
+                    <div class="proj-title">Fitness Tracker App</div>
+                    <div class="proj-desc">Mobile-first application for tracking workouts and nutrition.</div>
+                    <div class="proj-tags"><span class="tag">React Native</span><span class="tag">Firebase</span><span class="tag">Redux</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Social Proof</span>
+            <h2 class="section-title">Client Testimonials</h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"David completely transformed our website. The new design increased our conversion rate by 40% and perfectly represents our brand. His attention to detail was exceptional."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">SJ</div>
+                    <div><div class="testi-name">Sarah Johnson</div><div class="testi-role">CEO, TechSolutions</div></div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"Working with David on our mobile app was a game-changer. He took our vague ideas and turned them into a beautiful, intuitive interface. His UX expertise is second to none."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">MC</div>
+                    <div><div class="testi-name">Michael Chen</div><div class="testi-role">Marketing Director, FitLife</div></div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★½</div>
+                <p class="testi-quote">"David created our entire brand identity from scratch. He captured the essence of our café perfectly — warm, inviting, and unique. The logo has become instantly recognisable."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">ER</div>
+                    <div><div class="testi-name">Emma Rodriguez</div><div class="testi-role">Founder, Café Luna</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="section-header">
+            <span class="section-tag">Let's Talk</span>
+            <h2 class="section-title">Get In Touch</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's Build Something Great Together</h3>
+                <p>Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you as soon as possible.</p>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-detail">
+                        <strong>Email</strong>
+                        <span>dnkemitag@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-detail">
+                        <strong>Phone</strong>
+                        <span>+1 (647) 781-1653</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-detail">
+                        <strong>Location</strong>
+                        <span>Toronto, Canada</span>
+                    </div>
+                </div>
+                <div class="socials">
+                    <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-dribbble"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-wrap">
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" id="f-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" id="f-email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="f-subject" placeholder="Project Inquiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="f-message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit" id="f-submit">
+                        <i class="fas fa-paper-plane"></i> SEND MESSAGE
                     </button>
-                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="web">
-                        Web Design
-                    </button>
-                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="app">
-                        Web Apps
-                    </button>
-                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-r-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-blue-600" data-filter="game">
-                        Games
-                    </button>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 - Basketball Game -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="game">
-                    <div class="game-p preview-container">
-                        <canvas id="basketball-game-preview" width="600" height="400"></canvas>
-                        <div class="game-controls">
-                            <button class="game-btn shoot-btn">Shoot</button>
-                            <button class="game-btn reset-btn">Reset</button>
-                            <div class="score-display">Score: <span>0</span></div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Basketball Game</h3>
-                        <p class="text-gray-600 mb-4">Interactive web-based game with realistic physics built using JavaScript and Canvas API</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px=2 py-1 rounded">Canvas API</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Game Design</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 - E-commerce -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="web">
-                    <div class="h-64 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-600 mb-4">Full-featured online store with payment integration and admin dashboard</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 - Portfolio CMS -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
-                    <div class="h-64 bg-gradient-to-r from-green-500 to-teal-400 flex items-center justify-center">
-                        <i class="fas fa-user-tie text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Portfolio CMS</h3>
-                        <p class="text-gray-600 mb-4">Custom portfolio system with content management and analytics</p>
-                        <div class="flex flex-wrap gap=2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 - Business Dashboard -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
-                    <div class="h-64 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Business Dashboard</h3>
-                        <p class="text-gray-600 mb-4">Data visualization SPA with real-time updates and custom reporting</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">D3.js</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">REST API</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 - Restaurant Website -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="web">
-                    <div class="h-64 bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center">
-                        <i class="fas fa-utensils text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Restaurant Website</h3>
-                        <p class="text-gray-600 mb-4">Modern responsive website with online ordering system</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">HTML/CSS</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">PHP</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 - Fitness App -->
-                <div class="project-card relative rounded-lg overflow-hidden shadow-lg" data-category="app">
-                    <div class="h-64 bg-gradient-to-r from-red-500 to-pink-500 flex items-center justify-center">
-                        <i class="fas fa-dumbbell text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb=2">Fitness Tracker App</h3>
-                        <p class="text-gray-600 mb-4">Mobile-first application for tracking workouts and nutrition</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React Native</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Firebase</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Redux</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                </a>
+                    <div class="form-msg" id="form-msg"></div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px=4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client <span class="gradient-text">Testimonials</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">What my clients and colleagues say about my work.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Sarah Johnson</h4>
-                            <p class="text-gray-500 text-sm">CEO, TechSolutions</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        "David completely transformed our website. The new design increased our conversion rate by 40% and perfectly represents our brand. His attention to detail and understanding of our business needs was exceptional."
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Michael Chen</h4>
-                            <p class="text-gray-500 text-sm">Marketing Director, FitLife</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        "Working with David on our mobile app was a game-changer. He took our vague ideas and turned them into a beautiful, intuitive interface. His UX expertise helped us create an app our customers love using daily."
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-100 p-3 rounded-full mr-4">
-                            <i class="fas fa-user text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Emma Rodriguez</h4>
-                            <p class="text-gray-500 text-sm">Founder, Café Luna</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">
-                        "David created our entire brand identity from scratch. He captured the essence of our café perfectly - warm, inviting, and unique. The logo and visual elements he designed have become instantly recognizable in our community."
-                    </p>
-                    <div class="flex text-yellow-400">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div>
-                    
-            <!-- Client Logos -->
-            <div class="mt-16 pt-8 border-t border-gray-200">
-                <h3 class="text-center text-xl font-semibold mb-8">Trusted By</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                    <img src="https://via.placeholder.com/150x60?text=TechSolutions" alt="TechSolutions" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
-                    <img src="https://via.placeholder.com/150x60?text=FitLife" alt="FitLife" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
-                    <img src="https://via.placeholder.com/150x60?text=Café+Luna" alt="Café Luna" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
-                    <img src="https://via.placeholder.com/150x60?text=GlobalBank" alt="GlobalBank" class="h-12 object-contain opacity=70 hover:opacity-100 transition">
-                    <img src="https://via.placeholder.com/150x60?text=StartUpX" alt="StartUpX" class="h-12 object-contain opacity-70 hover:opacity-100 transition">
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">DAVID <span>NKEMITAG</span></div>
+        <p style="color:#555;font-size:0.85rem;">Creating beautiful digital experiences.</p>
+        <p class="footer-copy">© 2025 David Nkemitag. All rights reserved.</p>
+    </div>
+</footer>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Have a project in mind or want to discuss potential collaboration? I'd love to hear from you.</p>
-            </div>
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                    <h3 class="text-2xl font-bold mb-6">Let's Talk About Your Project</h3>
-                    <p class="text-gray-600 mb-8">
-                        Whether you have a question about my services, want to discuss a potential project, or just want to say hi, I'll get back to you as soon as possible.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-blue-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold">Email</p>
-                                <p class="text-gray-600">dnkemitag@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-blue-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold">Phone</p>
-                                <p class="text-gray-600">+1 (647) 781-1653</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-blue-500"></i>
-                            </div>
-                            <div>
-                                <p class="font-semibold">Location</p>
-                                <p class="text-gray-600">Toronto, Canada</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8">
-                        <h4 class="font-semibold mb-4">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray=700 hover:bg-blue-100 hover:text-blue-500 transition">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
-                                <i class="fab fa-dribbble"></i>
-                            </a>
-                            <a href="#" class="bg-gray-100 p-3 rounded-full text-gray-700 hover:bg-blue-100 hover:text-blue-500 transition">
-                                <i class="fab fa-behance"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray=300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition duration-300">
-                                Send Message <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<button id="back-top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#home" class="text-xl font-bold gradient-text">DAVID NKEMITAG</a>
-                    <p class="text-gray-400 mt-2">Creating beautiful digital experiences.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-dribbble"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-behance"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 David Nkemitag. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Sitemap</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<script>
+// ─── NAV ───
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('#mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+});
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+// ─── BACK TO TOP ───
+const backBtn = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+    backBtn.classList.toggle('show', window.scrollY > 400);
+});
+backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Filter portfolio items
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('bg-blue-500', 'text-white'));
-                
-                // Add active class to clicked button
-                this.classList.add('bg-blue-500', 'text-white');
-                
-                const filter = this.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
+// ─── SKILL BARS (intersection observer) ───
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.querySelectorAll('.skill-fill').forEach(bar => {
+                bar.style.width = bar.dataset.w + '%';
             });
-        });
+        }
+    });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-block').forEach(b => observer.observe(b));
 
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
+// ─── PROJECT FILTER ───
+document.querySelectorAll('.filt').forEach(btn => {
+    btn.addEventListener('click', function () {
+        document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const f = this.dataset.f;
+        document.querySelectorAll('.proj-card').forEach(card => {
+            const match = f === 'all' || card.dataset.cat === f;
+            card.style.display = match ? 'block' : 'none';
         });
+    });
+});
 
-        backToTopButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
+// ─── CONTACT FORM via mailto fallback + EmailJS-style ───
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = document.getElementById('f-submit');
+    const msg = document.getElementById('form-msg');
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const subject = document.getElementById('f-subject').value.trim();
+    const message = document.getElementById('f-message').value.trim();
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+    msg.className = 'form-msg';
+    msg.style.display = 'none';
 
-        // Highlight active navigation link
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+    // Build mailto: link as primary method (works without backend)
+    const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`
+    );
+    const mailto = `mailto:dnkemitag@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
-        // Simple basketball game for the project preview
-        const canvas = document.getElementById('basketball-game-preview');
-        const ctx = canvas.getContext('2d');
-        let score = 0;
-        
-        // Game elements
-        const hoop = {
-            x: canvas.width - 100,
-            y: 150,
-            width: 60,
-            height: 5,
-            rimWidth: 80,
-            rimHeight: 5
+    // Try opening mailto
+    try {
+        window.location.href = mailto;
+        setTimeout(() => {
+            msg.className = 'form-msg success';
+            msg.textContent = '✅ Your mail client has opened! If it didn\'t open, please email dnkemitag@gmail.com directly.';
+            msg.style.display = 'block';
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> SEND MESSAGE';
+            this.reset();
+        }, 1000);
+    } catch (err) {
+        msg.className = 'form-msg error';
+        msg.textContent = '❌ Something went wrong. Please email dnkemitag@gmail.com directly.';
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> SEND MESSAGE';
+    }
+});
+
+
+// ══════════════════════════════════════════════
+//  ARCADE HOOPS — Full Arcade Basketball Game
+// ══════════════════════════════════════════════
+(function () {
+    const canvas = document.getElementById('arcade-canvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    const scoreEl = document.getElementById('g-score');
+    const timerEl = document.getElementById('g-timer');
+    const streakEl = document.getElementById('g-streak');
+    const startBtn = document.getElementById('g-start');
+
+    // Game state
+    let state = 'idle'; // idle | playing | gameover
+    let score = 0, streak = 0, timeLeft = 30, timerInterval = null;
+    let balls = [], particles = [], hoops = [];
+    let aimX = W / 2, aimY = H / 2;
+    let mouseX = W / 2, mouseY = H / 2;
+    let canShoot = true;
+    let frameId = null;
+    let highScore = 0;
+    let flashMsg = null, flashTimer = 0;
+
+    // ── HOOP MANAGEMENT ──
+    function spawnHoop() {
+        const margin = 60;
+        return {
+            x: margin + Math.random() * (W - margin * 2),
+            y: 60 + Math.random() * (H / 2 - 40),
+            w: 50, h: 6,
+            scored: false,
+            life: 1.0, // fades for visual feedback
+            moving: Math.random() > 0.4,
+            dir: Math.random() > 0.5 ? 1 : -1,
+            speed: 0.8 + Math.random() * 1.5,
         };
-        
-        const backboard = {
-            x: hoop.x - 10,
-            y: hoop.y - 100,
-            width: 10,
-            height: 100
+    }
+
+    function initHoops() {
+        hoops = [];
+        const count = 2;
+        for (let i = 0; i < count; i++) {
+            const h = spawnHoop();
+            h.x = (W / (count + 1)) * (i + 1);
+            h.y = 70 + Math.random() * 80;
+            hoops.push(h);
+        }
+    }
+
+    // ── BALL ──
+    function createBall(tx, ty) {
+        const startX = W / 2 + (Math.random() - 0.5) * 30;
+        const startY = H - 20;
+        const dx = (tx - startX) * 0.07;
+        const dy = (ty - startY) * 0.07 - 2;
+        return {
+            x: startX, y: startY,
+            dx, dy,
+            gravity: 0.22,
+            r: 12,
+            trail: [],
+            spin: (Math.random() - 0.5) * 0.4,
+            angle: 0,
+            active: true,
+            bounced: false,
         };
-        
-        const ball = {
-            x: 100,
-            y: canvas.height - 50,
-            radius: 15,
-            dx: 0,
-            dy: 0,
-            gravity: 0.2,
-            friction: 0.99,
-            isMoving: false
-        };
-        
-        // Draw game elements
-        function draw() {
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw backboard
-            ctx.fillStyle = 'white';
-            ctx.fillRect(backboard.x, backboard.y, backboard.width, backboard.height);
-            
-            // Draw hoop
-            ctx.fillStyle = 'red';
-            ctx.fillRect(hoop.x, hoop.y, hoop.width, hoop.height);
-            
-            // Draw rim
-            ctx.fillStyle = 'orange';
-            ctx.fillRect(hoop.x - 10, hoop.y, hoop.rimWidth, hoop.rimHeight);
-            
-            // Draw ball
+    }
+
+    // ── PARTICLES ──
+    function burst(x, y, color, count = 18) {
+        for (let i = 0; i < count; i++) {
+            const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
+            const speed = 2 + Math.random() * 5;
+            particles.push({
+                x, y,
+                dx: Math.cos(angle) * speed,
+                dy: Math.sin(angle) * speed - 1,
+                life: 1.0,
+                decay: 0.03 + Math.random() * 0.03,
+                r: 3 + Math.random() * 4,
+                color
+            });
+        }
+    }
+
+    function scoreText(x, y, text) {
+        flashMsg = { x, y, text, life: 1.0 };
+    }
+
+    // ── DRAW ──
+    function drawCourt() {
+        // Floor
+        ctx.fillStyle = '#1a0a00';
+        ctx.fillRect(0, 0, W, H);
+
+        // Court wood pattern
+        for (let i = 0; i < 10; i++) {
+            ctx.fillStyle = `rgba(255,150,50,${0.03 + i * 0.003})`;
+            ctx.fillRect(0, H * 0.6 + i * 8, W, 7);
+        }
+
+        // Center circle hint
+        ctx.strokeStyle = 'rgba(255,140,0,0.12)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(W / 2, H, 80, Math.PI, 0);
+        ctx.stroke();
+
+        // Three-point arc
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.beginPath();
+        ctx.arc(W / 2, H + 20, W * 0.45, Math.PI, 0);
+        ctx.stroke();
+
+        // Aim indicator (subtle arc from shooter position)
+        if (state === 'playing' && canShoot) {
+            const sx = W / 2, sy = H - 20;
+            ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 8]);
             ctx.beginPath();
-            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'orange';
-            ctx.fill();
-            ctx.strokeStyle = 'black';
+            ctx.moveTo(sx, sy);
+            // Simulate a few steps of the trajectory for dotted aim line
+            let tx = sx, ty = sy;
+            let vx = (mouseX - sx) * 0.07;
+            let vy = (mouseY - sy) * 0.07 - 2;
+            for (let i = 0; i < 18; i++) {
+                vy += 0.22;
+                tx += vx; ty += vy;
+                if (i % 2 === 0) ctx.lineTo(tx, ty);
+            }
             ctx.stroke();
-            ctx.closePath();
-            
-            // Draw score
-            ctx.fillStyle = 'white';
-            ctx.font = '20px Arial';
-            ctx.fillText(`Score: ${score}`, 20, 30);
+            ctx.setLineDash([]);
         }
-        
-        // Update game state
-        function update() {
-            if (ball.isMoving) {
-                // Apply gravity
-                ball.dy += ball.gravity;
-                
-                // Apply friction
-                ball.dx *= ball.friction;
-                ball.dy *= ball.friction;
-                
-                // Update position
-                ball.x += ball.dx;
-                ball.y += ball.dy;
-                
-                // Check collision with floor
-                if (ball.y + ball.radius > canvas.height) {
-                    ball.y = canvas.height - ball.radius;
-                    ball.dy = -ball.dy * 0.6;
-                    ball.dx *= 0.8;
-                    
-                    if (Math.abs(ball.dy) < 1) {
-                        ball.isMoving = false;
-                    }
-                }
-                
-                // Check collision with walls
-                if (ball.x - ball.radius < 0) {
-                    ball.x = ball.radius;
-                    ball.dx = -ball.dx * 0.8;
-                }
-                
-                if (ball.x + ball.radius > canvas.width) {
-                    ball.x = canvas.width - ball.radius;
-                    ball.dx = -ball.dx * 0.8;
-                }
-                
-                // Check scoring
-                if (ball.y + ball.radius > hoop.y && 
-                    ball.y - ball.radius < hoop.y + hoop.height && 
-                    ball.x + ball.radius > hoop.x && 
-                    ball.x - ball.radius < hoop.x + hoop.width) {
-                    
-                    // Check if ball is coming from above
-                    if (ball.dy > 0) {
-                        score++;
-                        document.querySelector('.score-display span').textContent = score;
-                        resetBall();
-                    }
+    }
+
+    function drawHoops() {
+        hoops.forEach(hoop => {
+            // Backboard
+            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            ctx.fillRect(hoop.x + hoop.w / 2 - 3, hoop.y - 30, 5, 32);
+
+            // Backboard rectangle
+            ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(hoop.x + hoop.w / 2 - 14, hoop.y - 28, 28, 18);
+
+            // Rim glow
+            if (!hoop.scored) {
+                ctx.shadowColor = '#ff6600';
+                ctx.shadowBlur = 8;
+            }
+
+            // Left rim
+            ctx.fillStyle = hoop.scored ? '#888' : '#ff5500';
+            ctx.fillRect(hoop.x - 8, hoop.y, 10, hoop.h);
+
+            // Right rim
+            ctx.fillRect(hoop.x + hoop.w - 2, hoop.y, 10, hoop.h);
+
+            // Main hoop bar
+            ctx.fillStyle = hoop.scored ? '#666' : '#ff3300';
+            ctx.fillRect(hoop.x, hoop.y, hoop.w, hoop.h);
+
+            ctx.shadowBlur = 0;
+
+            // Net (simple lines)
+            ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const nx = hoop.x + (hoop.w / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(nx, hoop.y + hoop.h);
+                ctx.lineTo(nx + (i - 2) * 3, hoop.y + 28);
+                ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.moveTo(hoop.x, hoop.y + 14);
+            ctx.lineTo(hoop.x + hoop.w, hoop.y + 14);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(hoop.x + 4, hoop.y + 24);
+            ctx.lineTo(hoop.x + hoop.w - 4, hoop.y + 24);
+            ctx.stroke();
+        });
+    }
+
+    function drawBalls() {
+        balls.forEach(ball => {
+            if (!ball.active) return;
+
+            // Trail
+            ball.trail.forEach((pt, i) => {
+                const a = (i / ball.trail.length) * 0.4;
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, ball.r * (i / ball.trail.length) * 0.7, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 140, 0, ${a})`;
+                ctx.fill();
+            });
+
+            // Shadow
+            ctx.beginPath();
+            ctx.ellipse(ball.x, H - 4, ball.r * 0.8, 3, 0, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0,0,0,0.3)';
+            ctx.fill();
+
+            // Ball
+            ctx.save();
+            ctx.translate(ball.x, ball.y);
+            ctx.rotate(ball.angle);
+
+            const grad = ctx.createRadialGradient(-3, -4, 1, 0, 0, ball.r);
+            grad.addColorStop(0, '#ffaa33');
+            grad.addColorStop(0.6, '#ff6600');
+            grad.addColorStop(1, '#cc3300');
+            ctx.beginPath();
+            ctx.arc(0, 0, ball.r, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // Seams
+            ctx.strokeStyle = 'rgba(100,20,0,0.6)';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(0, 0, ball.r, -0.5, 0.5);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(0, 0, ball.r, Math.PI - 0.5, Math.PI + 0.5);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, -ball.r); ctx.lineTo(0, ball.r);
+            ctx.stroke();
+
+            ctx.restore();
+        });
+    }
+
+    function drawParticles() {
+        particles.forEach(p => {
+            ctx.globalAlpha = p.life;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+    }
+
+    function drawUI() {
+        if (state === 'idle') {
+            ctx.fillStyle = 'rgba(0,0,0,0.65)';
+            ctx.fillRect(0, 0, W, H);
+            ctx.fillStyle = '#ff5500';
+            ctx.font = 'bold 28px Space Mono, monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏀 ARCADE HOOPS', W / 2, H / 2 - 30);
+            ctx.fillStyle = 'rgba(255,255,255,0.8)';
+            ctx.font = '14px Space Mono, monospace';
+            ctx.fillText('Click START, then click to shoot!', W / 2, H / 2 + 10);
+            if (highScore > 0) {
+                ctx.fillStyle = '#ffd600';
+                ctx.font = '12px Space Mono, monospace';
+                ctx.fillText(`HIGH SCORE: ${String(highScore).padStart(3, '0')}`, W / 2, H / 2 + 40);
+            }
+            ctx.textAlign = 'left';
+        }
+
+        if (state === 'gameover') {
+            ctx.fillStyle = 'rgba(0,0,0,0.75)';
+            ctx.fillRect(0, 0, W, H);
+            ctx.fillStyle = '#ff4400';
+            ctx.font = 'bold 26px Space Mono, monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('GAME OVER', W / 2, H / 2 - 35);
+            ctx.fillStyle = '#ffd600';
+            ctx.font = '18px Space Mono, monospace';
+            ctx.fillText(`SCORE: ${String(score).padStart(3, '0')}`, W / 2, H / 2 + 5);
+            if (score >= highScore && score > 0) {
+                ctx.fillStyle = '#00e5ff';
+                ctx.font = '13px Space Mono, monospace';
+                ctx.fillText('🎉 NEW HIGH SCORE!', W / 2, H / 2 + 35);
+            }
+            ctx.textAlign = 'left';
+        }
+
+        // Flash message (score popups)
+        if (flashMsg && flashMsg.life > 0) {
+            ctx.globalAlpha = flashMsg.life;
+            ctx.fillStyle = '#ffd600';
+            ctx.font = 'bold 18px Space Mono, monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(flashMsg.text, flashMsg.x, flashMsg.y);
+            ctx.textAlign = 'left';
+            ctx.globalAlpha = 1;
+        }
+
+        // Shooter position indicator
+        if (state === 'playing') {
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.beginPath();
+            ctx.arc(W / 2, H - 20, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#ff5500';
+            ctx.beginPath();
+            ctx.arc(W / 2, H - 20, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    // ── UPDATE ──
+    function update() {
+        // Move hoops
+        hoops.forEach(hoop => {
+            if (hoop.moving && state === 'playing') {
+                hoop.x += hoop.dir * hoop.speed;
+                if (hoop.x < 20 || hoop.x > W - hoop.w - 20) hoop.dir *= -1;
+            }
+            if (hoop.scored) {
+                hoop.life -= 0.05;
+                if (hoop.life <= 0) {
+                    Object.assign(hoop, spawnHoop());
+                    hoop.scored = false;
+                    hoop.life = 1.0;
                 }
             }
-        }
-        
-        // Game loop
-        function gameLoop() {
-            update();
-            draw();
-            requestAnimationFrame(gameLoop);
-        }
-        
-        // Reset ball to starting position
-        function resetBall() {
-            ball.x = 100;
-            ball.y = canvas.height - 50;
-            ball.dx = 0;
-            ball.dy = 0;
-            ball.isMoving = false;
-        }
-        
-        // Shoot the ball
-        function shootBall() {
-            if (!ball.isMoving) {
-                ball.dx = 8 + Math.random() * 2;
-                ball.dy = -12 - Math.random() * 3;
-                ball.isMoving = true;
+        });
+
+        // Update balls
+        balls.forEach(ball => {
+            if (!ball.active) return;
+            ball.trail.push({ x: ball.x, y: ball.y });
+            if (ball.trail.length > 10) ball.trail.shift();
+
+            ball.dy += ball.gravity;
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+            ball.angle += ball.spin;
+
+            // Floor bounce
+            if (ball.y + ball.r > H) {
+                ball.y = H - ball.r;
+                ball.dy *= -0.45;
+                ball.dx *= 0.7;
+                ball.spin *= 0.5;
+                if (Math.abs(ball.dy) < 1.5) ball.active = false;
             }
+
+            // Walls
+            if (ball.x - ball.r < 0) { ball.x = ball.r; ball.dx *= -0.7; }
+            if (ball.x + ball.r > W) { ball.x = W - ball.r; ball.dx *= -0.7; }
+
+            // Out of frame above
+            if (ball.y + ball.r < 0) ball.active = false;
+
+            // Check scoring with each hoop
+            hoops.forEach(hoop => {
+                if (hoop.scored) return;
+                const cx = hoop.x + hoop.w / 2;
+                const cy = hoop.y;
+                const inX = ball.x > hoop.x + 4 && ball.x < hoop.x + hoop.w - 4;
+                const inY = ball.y + ball.r > cy - 2 && ball.y - ball.r < cy + hoop.h + 4;
+                if (inX && inY && ball.dy > 0) {
+                    // SCORE!
+                    hoop.scored = true;
+                    streak++;
+                    const pts = streak >= 3 ? 3 : streak >= 2 ? 2 : 1;
+                    score += pts;
+                    streakEl.textContent = streak;
+                    scoreEl.textContent = String(score).padStart(3, '0');
+
+                    const label = streak >= 3 ? `🔥 TRIPLE! +${pts}` : streak >= 2 ? `⚡ DOUBLE! +${pts}` : `+${pts}`;
+                    scoreText(cx, hoop.y - 15, label);
+                    burst(cx, cy, streak >= 3 ? '#00e5ff' : streak >= 2 ? '#ffd600' : '#ff6600');
+                    ball.active = false;
+                    canShoot = true;
+                }
+            });
+        });
+
+        // Remove dead balls — reset shoot if all gone
+        const anyActive = balls.some(b => b.active);
+        if (!anyActive && balls.length > 0 && state === 'playing') {
+            balls = balls.filter(b => b.active);
+            streak = 0;
+            streakEl.textContent = '0';
+            canShoot = true;
         }
-        
-        // Event listeners for game controls
-        document.querySelector('.shoot-btn').addEventListener('click', shootBall);
-        document.querySelector('.reset-btn').addEventListener('click', resetBall);
-        
-        // Start the game
-        gameLoop();
-    </script>
+
+        // Update particles
+        particles.forEach(p => {
+            p.x += p.dx; p.y += p.dy;
+            p.dy += 0.1;
+            p.life -= p.decay;
+        });
+        particles = particles.filter(p => p.life > 0);
+
+        // Flash message
+        if (flashMsg) {
+            flashMsg.y -= 0.8;
+            flashMsg.life -= 0.03;
+        }
+    }
+
+    // ── LOOP ──
+    function loop() {
+        ctx.clearRect(0, 0, W, H);
+        drawCourt();
+        drawHoops();
+        drawBalls();
+        drawParticles();
+        drawUI();
+        if (state === 'playing') update();
+        frameId = requestAnimationFrame(loop);
+    }
+
+    // ── CONTROLS ──
+    canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = W / rect.width;
+        const scaleY = H / rect.height;
+        mouseX = (e.clientX - rect.left) * scaleX;
+        mouseY = (e.clientY - rect.top) * scaleY;
+    });
+
+    canvas.addEventListener('click', e => {
+        if (state !== 'playing' || !canShoot) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = W / rect.width;
+        const scaleY = H / rect.height;
+        const tx = (e.clientX - rect.left) * scaleX;
+        const ty = (e.clientY - rect.top) * scaleY;
+        const ball = createBall(tx, ty);
+        balls.push(ball);
+        canShoot = false;
+        // allow shooting again after short delay if ball is off-screen fast
+        setTimeout(() => {
+            if (!balls.some(b => b.active)) {
+                canShoot = true;
+                streak = 0;
+                streakEl.textContent = '0';
+            }
+        }, 3000);
+    });
+
+    // Touch support
+    canvas.addEventListener('touchend', e => {
+        e.preventDefault();
+        if (state !== 'playing' || !canShoot) return;
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.changedTouches[0];
+        const scaleX = W / rect.width;
+        const scaleY = H / rect.height;
+        const tx = (touch.clientX - rect.left) * scaleX;
+        const ty = (touch.clientY - rect.top) * scaleY;
+        balls.push(createBall(tx, ty));
+        canShoot = false;
+    }, { passive: false });
+
+    startBtn.addEventListener('click', () => {
+        if (state === 'playing') return;
+        // Reset
+        score = 0; streak = 0; timeLeft = 30;
+        balls = []; particles = [];
+        canShoot = true;
+        scoreEl.textContent = '000';
+        timerEl.textContent = '30';
+        streakEl.textContent = '0';
+        state = 'playing';
+        startBtn.textContent = 'PLAYING';
+        initHoops();
+
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                state = 'gameover';
+                if (score > highScore) highScore = score;
+                startBtn.textContent = 'PLAY AGAIN';
+            }
+        }, 1000);
+    });
+
+    // Kick off render loop
+    initHoops();
+    loop();
+})();
+</script>
 </body>
 </html>
